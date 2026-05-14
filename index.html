@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>AVO Operating System · v0.1 · Launch 2026.05.16</title>
+<title>AVO Operating System · v0.3 · Launch 2026.05.16</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Noto+Serif+KR:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -25,7 +25,64 @@ body {
   font-family:var(--sans); background:var(--bg); color:var(--ink);
   font-size:14.5px; line-height:1.65; -webkit-font-smoothing:antialiased;
 }
-.wrap { max-width:1280px; margin:0 auto; padding:32px 28px 96px; }
+.wrap { max-width:1280px; margin:0 auto; padding:0 28px 96px; }
+
+/* STICKY NAV */
+.sticky-nav {
+  position:sticky; top:0; z-index:100;
+  background:rgba(250,250,247,0.96); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+  padding:12px 0; margin:0 -28px 24px; padding-left:28px; padding-right:28px;
+}
+.sticky-nav-inner {
+  max-width:1280px; margin:0 auto;
+  display:flex; align-items:center; gap:16px;
+}
+.nav-brand {
+  font-family:var(--mono); font-size:11px; letter-spacing:0.18em;
+  color:var(--forest); font-weight:700; text-transform:uppercase;
+  flex-shrink:0;
+}
+.nav-pills {
+  display:flex; gap:6px; overflow-x:auto;
+  flex:1; padding:2px 0;
+  scrollbar-width:thin;
+}
+.nav-pills::-webkit-scrollbar { height:4px; }
+.nav-pills::-webkit-scrollbar-thumb { background:var(--rule); border-radius:2px; }
+.nav-pill {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 12px;
+  font-family:var(--mono); font-size:10px; letter-spacing:0.06em;
+  color:var(--mid); text-decoration:none; white-space:nowrap;
+  border-radius:99px; border:1px solid var(--rule);
+  transition:all 0.15s; cursor:pointer; background:transparent;
+}
+.nav-pill:hover {
+  border-color:var(--forest); color:var(--forest);
+}
+.nav-pill.active {
+  background:var(--forest); color:var(--paper); border-color:var(--forest);
+}
+.nav-pill .num { font-weight:700; opacity:0.7; }
+.nav-pill.active .num { opacity:1; }
+
+.to-top-btn {
+  display:none; position:fixed; bottom:28px; right:28px;
+  width:48px; height:48px; background:var(--ink); color:var(--paper);
+  border-radius:50%; border:none; cursor:pointer; font-size:18px;
+  z-index:200; box-shadow:0 4px 16px rgba(0,0,0,0.18);
+  transition:opacity 0.2s, transform 0.2s;
+  align-items:center; justify-content:center;
+}
+.to-top-btn.visible { display:flex; }
+.to-top-btn:hover { transform:translateY(-2px); }
+
+@media (max-width:760px) {
+  .sticky-nav-inner { gap:10px; }
+  .nav-brand { font-size:9px; }
+  .nav-pill { font-size:9px; padding:5px 10px; }
+}
 
 /* HEADER */
 header {
@@ -278,14 +335,41 @@ footer {
 </style>
 </head>
 <body>
-<div class="wrap">
+
+<!-- STICKY TOP NAV -->
+<div class="sticky-nav">
+  <div class="sticky-nav-inner">
+    <a href="#top" class="nav-brand">AVO · OS</a>
+    <div class="nav-pills">
+      <a href="#m00" class="nav-pill" data-target="m00"><span class="num">00</span>Today</a>
+      <a href="#m01" class="nav-pill" data-target="m01"><span class="num">01</span>Roles</a>
+      <a href="#m02" class="nav-pill" data-target="m02"><span class="num">02</span>T-minus</a>
+      <a href="#m03" class="nav-pill" data-target="m03"><span class="num">03</span>Launch wk</a>
+      <a href="#m04" class="nav-pill" data-target="m04"><span class="num">04</span>Ops</a>
+      <a href="#m05" class="nav-pill" data-target="m05"><span class="num">05</span>Channels</a>
+      <a href="#m06" class="nav-pill" data-target="m06"><span class="num">06</span>Marketing</a>
+      <a href="#m07" class="nav-pill" data-target="m07"><span class="num">07</span>Product</a>
+      <a href="#m08" class="nav-pill" data-target="m08"><span class="num">08</span>Brand</a>
+      <a href="#m09" class="nav-pill" data-target="m09"><span class="num">09</span>Finance</a>
+      <a href="#m10" class="nav-pill" data-target="m10"><span class="num">10</span>Cadence</a>
+      <a href="#m11" class="nav-pill" data-target="m11"><span class="num">11</span>Invest</a>
+      <a href="#m12" class="nav-pill" data-target="m12"><span class="num">12</span>Stack</a>
+      <a href="#m13" class="nav-pill" data-target="m13"><span class="num">13</span>Learn</a>
+    </div>
+  </div>
+</div>
+
+<button class="to-top-btn" id="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<div class="wrap" id="top">
+  <div style="height:32px;"></div>
 
 <!-- ============== HEADER ============== -->
 <header>
   <div class="header-left">
-    <div class="brandmark">AVO Operating System · v0.1</div>
+    <div class="brandmark">AVO Operating System · v0.3 · all sections live</div>
     <h1>The OS — <span class="kr">AVO 운영 시스템</span></h1>
-    <p class="subhead">Live operating doc for Alex + Justin (operations) + Dawon (design). Built section-by-section. <strong>Section 02 (T-minus 48h critical path) is live below.</strong> Sections 04-13 follow within 3-5 days.</p>
+    <p class="subhead">Living operating doc for Alex + Justin (ops) + Dawon (design). Sticky nav at top — jump to any section. All 14 sections (00-13) now have full content. Updated iteratively as we learn.</p>
   </div>
   <div class="tminus-hero">
     <div class="tminus-label">T-MINUS</div>
@@ -300,16 +384,16 @@ footer {
   <a href="#m01" class="live"><span class="num">01</span>Roles + cadence</a>
   <a href="#m02" class="live"><span class="num">02</span>T-minus 48h checklist</a>
   <a href="#m03" class="live"><span class="num">03</span>Launch week protocol</a>
-  <a href="#m04" class="pending"><span class="num">04</span>Operations function</a>
-  <a href="#m05" class="pending"><span class="num">05</span>Sales / Channels</a>
-  <a href="#m06" class="pending"><span class="num">06</span>Marketing function</a>
-  <a href="#m07" class="pending"><span class="num">07</span>Product function</a>
+  <a href="#m04" class="live"><span class="num">04</span>Operations function</a>
+  <a href="#m05" class="live"><span class="num">05</span>Sales / Channels</a>
+  <a href="#m06" class="live"><span class="num">06</span>Marketing function</a>
+  <a href="#m07" class="live"><span class="num">07</span>Product function</a>
   <a href="#m08" class="live"><span class="num">08</span>Brand / BM · Episodes</a>
-  <a href="#m09" class="pending"><span class="num">09</span>Finance function</a>
-  <a href="#m10" class="pending"><span class="num">10</span>Management cadence</a>
-  <a href="#m11" class="pending"><span class="num">11</span>Investment / Scaling</a>
-  <a href="#m12" class="pending"><span class="num">12</span>Tools / Stack</a>
-  <a href="#m13" class="pending"><span class="num">13</span>Per-function crash course</a>
+  <a href="#m09" class="live"><span class="num">09</span>Finance function</a>
+  <a href="#m10" class="live"><span class="num">10</span>Management cadence</a>
+  <a href="#m11" class="live"><span class="num">11</span>Investment / Scaling</a>
+  <a href="#m12" class="live"><span class="num">12</span>Tools / Stack</a>
+  <a href="#m13" class="live"><span class="num">13</span>Per-function crash course</a>
 </nav>
 
 <!-- ============== 00 · TODAY'S REALITY ============== -->
@@ -683,16 +767,79 @@ footer {
     <span class="bignum">04</span>
     <div class="titles">
       <h2>Operations function<span class="kr">운영 기능</span></h2>
-      <div class="meta">Inventory · Daoom warehouse · fulfillment · CS · returns · <span class="module-status pending">building</span></div>
+      <div class="meta">Inventory · Daoom fulfillment · CS · returns · QC · <span class="module-status live">live</span></div>
     </div>
   </div>
-  <p class="lead">Coming next (Day 3-4 of build). Covers:</p>
-  <ul style="list-style:none; max-width:760px;">
-    <li style="padding:6px 0 6px 18px; position:relative; font-size:13px;"><span style="position:absolute;left:0;color:var(--forest);">·</span> KY → Daoom inventory transfer protocol (lot tracking, FIFO, expiration management)</li>
-    <li style="padding:6px 0 6px 18px; position:relative; font-size:13px;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Daoom warehouse fulfillment workflow (order → pick → pack → ship → 운송장 발급)</li>
-    <li style="padding:6px 0 6px 18px; position:relative; font-size:13px;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Customer service playbook (top-30 FAQ, escalation tree, complaint resolution SLA)</li>
-    <li style="padding:6px 0 6px 18px; position:relative; font-size:13px;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Returns/exchanges process (Naver vs Coupang policy differences)</li>
-    <li style="padding:6px 0 6px 18px; position:relative; font-size:13px;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Quality control + customer complaint protocol</li>
+
+  <p class="lead">Justin owns ops daily. Daoom handles physical inventory + fulfillment. AVO (재니스바스켓) owns customer relationship + CS responses. Daily ops touch: order check, fulfillment confirmation, CS sweep.</p>
+
+  <h3>Inventory transfer · KY Logistics → Daoom warehouse</h3>
+  <table>
+    <tr><th>Step</th><th>Owner</th><th>Notes</th></tr>
+    <tr><td>1. Confirm pickup with KY</td><td>Justin</td><td>Date, time, temperature transport spec</td></tr>
+    <tr><td>2. Book freight (KY 강원 → 평창 Daoom)</td><td>Justin</td><td>Tilted truck, ambient (샐러두유 멸균품)</td></tr>
+    <tr><td>3. Daoom receiving confirmation</td><td>Daoom + Justin</td><td>Pallet count vs PO · SKU vs label vs lot match</td></tr>
+    <tr><td>4. Lot tracking sheet</td><td>Justin</td><td>Manufacturing date · 소비기한 · pallet location · FIFO order</td></tr>
+    <tr><td>5. Reconciliation</td><td>Justin</td><td>PO qty vs shipped qty vs received qty · resolve any variance</td></tr>
+    <tr><td>6. Confirmation email to Daoom CEO + 김형서 대표</td><td>Alex</td><td>Move complete · Daoom takes responsibility for fulfillment</td></tr>
+  </table>
+
+  <h3>Daily fulfillment workflow (steady state)</h3>
+  <table>
+    <tr><th>Time (KST)</th><th>Action</th><th>Owner</th></tr>
+    <tr><td>09:00</td><td>Pull all overnight orders · Naver + Coupang + 공구</td><td>Justin</td></tr>
+    <tr><td>09:30</td><td>Send order manifest to Daoom warehouse (KakaoTalk or email)</td><td>Justin</td></tr>
+    <tr><td>10:00-13:00</td><td>Daoom: pick → pack → 운송장 발급 (CJ 대한통운 or 한진택배)</td><td>Daoom team</td></tr>
+    <tr><td>14:00</td><td>운송장 numbers uploaded to Naver + Coupang dashboards</td><td>Justin + Daoom</td></tr>
+    <tr><td>16:00</td><td>EOD shipment confirmation · all today's orders shipped</td><td>Justin</td></tr>
+  </table>
+
+  <p style="font-size:12.5px;color:var(--muted);">※ Naver 도착보장: orders before noon ship same-day, deliver next-day. Confirm cutoff with Daoom.</p>
+
+  <h3>Customer service playbook</h3>
+  <table>
+    <tr><th>Channel</th><th>Response SLA</th><th>Owner</th></tr>
+    <tr><td>KakaoTalk Channel @allvitalorganics</td><td>≤2h business hours</td><td>Alex</td></tr>
+    <tr><td>Naver Smartstore Q&A</td><td>≤24h</td><td>Justin</td></tr>
+    <tr><td>Coupang Wing Q&A</td><td>≤24h</td><td>Justin</td></tr>
+    <tr><td>Email hello@allvitalorganics</td><td>≤24h</td><td>Alex</td></tr>
+    <tr><td>Phone 02-3445-3030</td><td>Voicemail + KakaoTalk redirect</td><td>Voicemail auto-reply</td></tr>
+  </table>
+
+  <h4>Top-15 customer FAQ — pre-loaded templates</h4>
+  <table>
+    <tr><th>Question</th><th>Template response (KR)</th></tr>
+    <tr><td>임산부도 마셔도 되나요?</td><td>일반식품이며 의약품이 아닙니다. 임산부는 개별 영양 상담 후 결정 권장.</td></tr>
+    <tr><td>아이도 마셔도 되나요?</td><td>대두·밀 알레르기 가능 원료 포함. 알레르기 확인 후 결정 권장.</td></tr>
+    <tr><td>하루에 몇 팩이 적당한가요?</td><td>1-2팩 권장. 식이섬유 9g 포함되어 과다 섭취 시 부담 가능.</td></tr>
+    <tr><td>맛이 어떤가요?</td><td>식물·콩 베이스 자연식 맛. 일반 두유보다 진하고 코코넛꽃액즙으로 자연 단맛.</td></tr>
+    <tr><td>보관은 어떻게?</td><td>직사광선 피하고 서늘하고 건조한 곳. 개봉 후 즉시 섭취.</td></tr>
+    <tr><td>소비기한은?</td><td>패키지 상단 표기. 제조일로부터 약 9개월.</td></tr>
+    <tr><td>배송은 며칠 걸리나요?</td><td>네이버 도착보장: 평일 정오 이전 주문 시 익일 도착. 쿠팡: 표준 배송.</td></tr>
+    <tr><td>교환·환불은?</td><td>단순 변심 7일 내 미개봉 상태 가능. 파손/하자 시 전액 환불.</td></tr>
+    <tr><td>구독 / 정기배송 있나요?</td><td>네이버 스마트스토어 정기구독 가능 (10% 할인).</td></tr>
+    <tr><td>대량 구매 / 공동구매 문의</td><td>KakaoTalk 채널로 별도 문의. 100박스 이상 협의.</td></tr>
+    <tr><td>알레르기 우려</td><td>대두·밀 함유. 동일 시설 가공: 알류·우유·메밀·땅콩·복숭아·토마토·호두·잣·돼지고기·쇠고기.</td></tr>
+    <tr><td>혈당 / 당뇨 환자 섭취 가능?</td><td>당류 8g 포함. 본인 식이요법 의사 상담 권장.</td></tr>
+    <tr><td>유기농 인증 확인?</td><td>유기가공식품 인증번호 라벨 후면 표기. 18종 과채 유기농 동결건조.</td></tr>
+    <tr><td>해외 배송 가능?</td><td>현재 국내 배송만. 해외는 추후 결정.</td></tr>
+    <tr><td>도매 / B2B 문의</td><td>hello@allvitalorganics 또는 KakaoTalk 채널로 별도 문의.</td></tr>
+  </table>
+
+  <h3>Returns / exchanges — Naver vs Coupang</h3>
+  <table>
+    <tr><th>Channel</th><th>Policy</th><th>Process</th></tr>
+    <tr><td>Naver Smartstore</td><td>단순변심 7일 · 미개봉 · 왕복 배송비 고객 부담</td><td>Naver dashboard 처리</td></tr>
+    <tr><td>Coupang</td><td>30일 환불 가능 · 미개봉 · 왕복 배송비 고객 부담</td><td>Coupang Wing 처리 · 보통 자동 승인</td></tr>
+    <tr><td>파손 / 변질 (모든 채널)</td><td>전액 환불 + 대체품 발송</td><td>사진 확인 후 즉시 처리</td></tr>
+  </table>
+
+  <h3>Quality control protocol</h3>
+  <ul style="list-style:none; max-width:820px;">
+    <li style="padding:6px 0 6px 16px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Sample box test every 100 boxes received from Daoom · taste, label correctness, package integrity</li>
+    <li style="padding:6px 0 6px 16px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Customer complaint log · 매주 review · pattern detection</li>
+    <li style="padding:6px 0 6px 16px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Quarterly batch analysis · 3rd-party 분석 시험성적서 · nutrition vs label match</li>
+    <li style="padding:6px 0 6px 16px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Escalation: if 3+ complaints same issue same week → pause shipping that batch, investigate with Daoom</li>
   </ul>
 </section>
 
@@ -701,10 +848,61 @@ footer {
     <span class="bignum">05</span>
     <div class="titles">
       <h2>Sales / Channels<span class="kr">판매 / 채널</span></h2>
-      <div class="meta">Naver Smartstore · Coupang · KPIs · channel ladder · <span class="module-status pending">building</span></div>
+      <div class="meta">Naver · Coupang · channel ladder · KPIs · <span class="module-status live">live</span></div>
     </div>
   </div>
-  <p class="lead">Day 4-5 of build. Includes channel-by-channel setup, optimization, BM relationship management, expansion ladder (3PL → Rocket Growth → 1P → 홈쇼핑).</p>
+
+  <p class="lead">Day 1 channels: Naver Smartstore + Coupang. <strong>No DTC, no 공구 day 1, no 홈쇼핑 day 1.</strong> The expansion ladder adds channels only when the existing ones are saturated and we have capacity.</p>
+
+  <h3>Naver Smartstore — primary channel</h3>
+  <table>
+    <tr><th>Setting</th><th>Value</th><th>Owner</th></tr>
+    <tr><td>입점 형태</td><td>영세사업자 (재니스바스켓㈜)</td><td>—</td></tr>
+    <tr><td>수수료</td><td>~3.96% (영세 1.98% + 결제 2%)</td><td>—</td></tr>
+    <tr><td>정산</td><td>D+1, 매주 정기 송금</td><td>Justin 매주 확인</td></tr>
+    <tr><td>도착보장</td><td>활성화 (Daoom 익일 출고 cutoff: 12:00 KST)</td><td>Justin · Daoom</td></tr>
+    <tr><td>정기구독 (구독판매)</td><td>활성화 · 10% 할인 (월 1-2박스)</td><td>Justin</td></tr>
+    <tr><td>키워드 (검색최적화)</td><td>"AVO 샐러두유", "와일드 그린즈", "식이섬유 두유", "유기농 두유", "식물성 단백질 음료"</td><td>Alex copy / Justin upload</td></tr>
+    <tr><td>PDP 상세페이지</td><td>기승전결 구조 · 헤리티지 + 18종 + 영양 + 사용방법 + FAQ</td><td>Alex copy / Dawon design</td></tr>
+    <tr><td>가격 정책</td><td>1박스 ₩45K · 2박스 ₩84K · 정기 ₩40.5K</td><td>—</td></tr>
+    <tr><td>리뷰 응답 SLA</td><td>24h · 좋은 리뷰 + 부정 리뷰 모두 정중하게 응답</td><td>Justin</td></tr>
+  </table>
+
+  <h3>Coupang Marketplace — secondary channel</h3>
+  <table>
+    <tr><th>Setting</th><th>Value</th><th>Owner</th></tr>
+    <tr><td>가입 형태</td><td>3P Marketplace (셀러 가입)</td><td>—</td></tr>
+    <tr><td>카테고리</td><td>식품 → 음료 → 두유</td><td>Justin</td></tr>
+    <tr><td>수수료</td><td>~6% (카테고리별 변동)</td><td>—</td></tr>
+    <tr><td>정산</td><td>월 2회 · D+15</td><td>Justin 월 2회 확인</td></tr>
+    <tr><td>Rocket Growth (FLC)</td><td>Phase 2 — Week 4+ 검토 · 검증 후 단계적 진입</td><td>Justin</td></tr>
+    <tr><td>가격</td><td>1박스 ₩47,000 (Naver보다 +4% to cover higher fees)</td><td>—</td></tr>
+    <tr><td>리뷰 응답</td><td>Coupang Wing Q&A · 24h</td><td>Justin</td></tr>
+    <tr><td>BM relationship</td><td>Week 4+ 후 카테고리 BM 연락 시도 · GoldBox 가능성 탐색</td><td>Alex (long-term)</td></tr>
+  </table>
+
+  <h3>Channel ladder · when to add the next channel</h3>
+  <table>
+    <tr><th>Channel</th><th>Add when</th><th>Trade-off</th></tr>
+    <tr><td>공동구매 (group buy)</td><td>Month 1 · once initial gift-seed reactions positive</td><td>Lower margin (50-55%) for free acquisition · No upfront</td></tr>
+    <tr><td>마켓컬리</td><td>Month 3+ · only after 1500+ boxes sold</td><td>Wholesale margin (45-50%) but premium brand halo + 가족이 추천 channel</td></tr>
+    <tr><td>홈쇼핑 (low-deduction slot)</td><td>Month 4+ · need scale 김지원 connector + video shoot ready</td><td>Volume play (1,000-5,000 boxes per slot) at 62-64% margin if low-deduction</td></tr>
+    <tr><td>Wadiz (for new SKU)</td><td>Phyto Complete launch Q4 2026 / Q1 2027</td><td>54-58% margin on standard tier · funds production without inventory risk</td></tr>
+    <tr><td>이마트 / GS Shop (offline retail)</td><td>Year 2+ · only with marketing budget to support</td><td>Required marketing co-investment · stocking risk</td></tr>
+    <tr><td>자사몰 DTC</td><td>Year 2+ · only after established brand recognition</td><td>Highest margin (70%) but acquisition cost-intensive</td></tr>
+  </table>
+
+  <h3>Channel KPIs · weekly tracking</h3>
+  <table>
+    <tr><th>KPI</th><th>Naver target</th><th>Coupang target</th></tr>
+    <tr><td>Weekly orders</td><td>30-50 (Month 1) → 80-120 (Month 3)</td><td>15-25 → 40-60</td></tr>
+    <tr><td>Conversion rate</td><td>≥1.5% (visitor → purchase)</td><td>≥1.0%</td></tr>
+    <tr><td>Repeat rate</td><td>15% (Month 3) → 25% (Month 6)</td><td>10% → 20%</td></tr>
+    <tr><td>Average order value (AOV)</td><td>≥₩45K (1 box) · grow to ₩60K (mixed)</td><td>≥₩47K</td></tr>
+    <tr><td>Refund rate</td><td>&lt;3%</td><td>&lt;5% (Coupang easier returns)</td></tr>
+    <tr><td>Review count</td><td>+5/week (Month 1) → +15/week (Month 3)</td><td>+3/week → +8/week</td></tr>
+    <tr><td>Average review rating</td><td>≥4.5 / 5.0</td><td>≥4.3 / 5.0</td></tr>
+  </table>
 </section>
 
 <section class="module" id="m06">
@@ -712,10 +910,146 @@ footer {
     <span class="bignum">06</span>
     <div class="titles">
       <h2>Marketing function<span class="kr">마케팅 기능</span></h2>
-      <div class="meta">IG · Meta · Google · Naver SA/DA/cafe/blog · UGC · influencer · <span class="module-status pending">building</span></div>
+      <div class="meta">$10K budget · zero/low-budget engine · 공구 · Wadiz · influencer friends · <span class="module-status live">live</span></div>
     </div>
   </div>
-  <p class="lead">Day 3 of build (high priority). Includes campaign structures, audience definitions, creative testing protocol, UGC seeding system, influencer outreach templates, attribution tracking.</p>
+
+  <p class="lead">AVO launches with a <strong>$10K total marketing budget for Salad Soymilk</strong>. The strategy is: <strong>acquisition is free</strong> (organic content, influencer friends, 공구, press). <strong>Paid is defensive only</strong> (retargeting + brand keywords). The cash reserve gets deployed only after Week 2-4 once we know what's working.</p>
+
+  <div class="callout"><strong>Operating principle:</strong> if a marketing dollar isn't either (a) capturing existing intent (brand search), (b) retargeting people who already came, or (c) seeding word-of-mouth — it doesn't get spent.</div>
+
+  <h3>The $10K budget — locked allocation</h3>
+  <table>
+    <tr><th>Bucket</th><th>Amount (KRW)</th><th>USD ~</th><th>% of total</th><th>Rationale</th></tr>
+    <tr><td>Photography + content production</td><td>₩1,500,000</td><td>$1,100</td><td>11%</td><td>Pouch hero, lifestyle, product cuts, Reel B-roll</td></tr>
+    <tr><td>Gift seeding (50 boxes × ~₩15K incl. shipping)</td><td>₩750,000</td><td>$550</td><td>5.7%</td><td>Friends + micro-influencers + press</td></tr>
+    <tr><td>Meta retargeting (no cold)</td><td>₩1,500,000</td><td>$1,100</td><td>11%</td><td>Day 1-60, retargets site visitors + IG engagers · ₩25K/day × 60</td></tr>
+    <tr><td>Naver SA brand keywords (defensive)</td><td>₩1,200,000</td><td>$870</td><td>9%</td><td>"AVO 샐러두유" "와일드 그린즈" — protect brand traffic · ₩20K/day × 60</td></tr>
+    <tr><td>Google brand keywords (defensive)</td><td>₩600,000</td><td>$435</td><td>4.5%</td><td>EN search defensive · ₩10K/day × 60</td></tr>
+    <tr><td>Tools + subscriptions (6 months)</td><td>₩700,000</td><td>$500</td><td>5%</td><td>Mercury, 자비스, Notion, Figma, Cashnote</td></tr>
+    <tr><td><strong>Reserve — opportunity deployment</strong></td><td><strong>₩7,000,000</strong></td><td><strong>$5,070</strong></td><td><strong>52%</strong></td><td>Held back. Deployed Week 3+ to whatever proves it converts (additional retargeting, top creator paid post, 공구 organizer fees, Wadiz launch).</td></tr>
+    <tr><td colspan="2"><strong>Total</strong></td><td><strong>~$9,625</strong></td><td><strong>100%</strong></td><td>Under $10K cap</td></tr>
+  </table>
+
+  <h3>Zero-budget marketing — the actual acquisition engine</h3>
+  <p class="lead">All 6 of these are free or cost-of-product only. They do the work of customer acquisition.</p>
+
+  <table>
+    <tr><th>Channel</th><th>Cost</th><th>Owner</th><th>What we do</th><th>Why it works</th></tr>
+    <tr><td><strong>Organic Instagram</strong> (Reel-first → Carousel)</td><td>Time only</td><td>Alex content / Dawon visual</td><td>2 Reels/week · Mon + Thu 8pm KST · 15-episode runway already drafted (<a href="https://allvitalorganics.github.io/avo-episodes/" target="_blank">avo-episodes</a>)</td><td>Founder discovery voice compounds. Algorithm favors original carousels (NoScroll signal). No paid IG can replicate authentic Reel.</td></tr>
+    <tr><td><strong>KakaoTalk Channel</strong></td><td>Free</td><td>Alex (CS) / Justin (broadcast)</td><td>Launch announcement → new SKU broadcasts → CS responses · Auto-reply with FAQs</td><td>Korea-native, free, highest open rate of any channel</td></tr>
+    <tr><td><strong>Naver Blog</strong></td><td>Free</td><td>Alex</td><td>1 long-form post/week · 1000-day story, 18-plant deep-dive, recipe ideas, supplier diaries</td><td>Naver SEO heavily favors blog content for product-name searches</td></tr>
+    <tr><td><strong>Naver Cafe engagement</strong></td><td>Free</td><td>Justin</td><td>Engage 5-10 wellness/diet/맘카페 communities authentically · No spam, real participation</td><td>Discovery channel for organic word-of-mouth in Korea</td></tr>
+    <tr><td><strong>Press list outreach</strong></td><td>Free</td><td>Alex</td><td>5-10 wellness/food press contacts at launch · Email template + media kit</td><td>One pickup = free credibility + backlinks</td></tr>
+    <tr><td><strong>공동구매 (group buy)</strong></td><td>Revenue share only · no upfront</td><td>Alex outreach / Justin ops</td><td>Identify 5-10 cafe/맘카페/카톡방 organizers · 15-20% revenue share · 100-500 boxes per round</td><td>Pure performance — they sell, they get paid · No risk to AVO</td></tr>
+    <tr><td><strong>UGC repost loop</strong></td><td>Cost of gift boxes</td><td>Alex</td><td>Send to 50 friend-network + micro-influencers · No fee, no contract · "If you enjoy it, share it" · Get permission to repost</td><td>Authentic UGC = ad creative AVO never has to pay for</td></tr>
+  </table>
+
+  <h3>Low-budget paid ads — defensive playbook</h3>
+
+  <div class="callout warn"><strong>Rule:</strong> Zero cold prospecting ad spend until Week 4. Cold prospecting at our budget scale doesn't compete with brands spending 100× more. Defensive only — capture intent we already created via organic.</div>
+
+  <table>
+    <tr><th>Platform</th><th>Campaign type</th><th>Budget</th><th>Target audience</th><th>Creative</th></tr>
+    <tr><td>Meta (Facebook + Instagram)</td><td>Retargeting only</td><td>₩25K/day × 60 = ₩1.5M</td><td>People who visited Naver/Coupang via clicks · IG profile visitors · IG engagers · video viewers 50%+</td><td>Hero pouch + 식이섬유 5g claim · A/B Reel cut vs static</td></tr>
+    <tr><td>Naver SA (검색광고)</td><td>Brand defense + product</td><td>₩20K/day × 60 = ₩1.2M</td><td>Searchers of "AVO", "와일드 그린즈", "샐러두유", "유기농 두유 식이섬유"</td><td>Naver 파워링크 standard format</td></tr>
+    <tr><td>Google Ads</td><td>Brand only</td><td>₩10K/day × 60 = ₩600K</td><td>"AVO Korea", "Wild Greens Salad Soymilk", brand variations</td><td>Standard search ads · land on Naver Smartstore</td></tr>
+  </table>
+
+  <p style="font-size:12.5px; color:var(--muted); margin-top:6px;">※ <strong>If Naver SA brand keywords cost >₩50/click</strong> after Week 2, pause and switch to organic Naver blog SEO instead — paid brand defense is only economical when cheap.</p>
+
+  <h3>Influencer friend system — the highest-ROI channel</h3>
+  <p class="lead">50 friend/micro-influencer contacts at launch. <strong>No payment. No contract. Just a gift box.</strong> They post if they want to.</p>
+
+  <table>
+    <tr><th>Tier</th><th>Profile</th><th>Count</th><th>Ask</th><th>What they get</th></tr>
+    <tr><td>Friend network</td><td>Personal contacts in food/wellness/beauty (any size)</td><td>25-30</td><td>"Try it. If you like, share it. No pressure."</td><td>Free box + handwritten note</td></tr>
+    <tr><td>Micro-influencer (1K-10K)</td><td>Korean wellness/food creators, dietary focus</td><td>10-15</td><td>Same. Soft-ask only.</td><td>Free box + brief intro note (no PR-style pitch)</td></tr>
+    <tr><td>Mid-tier (10K-50K)</td><td>Selective — only if already shows discovery voice</td><td>3-5</td><td>Same. May offer to do a long-form review for fee later if it works.</td><td>Free box + meeting if reasonable</td></tr>
+    <tr><td>Doctor / clinician (any size)</td><td>Functional med / women's health KOLs</td><td>2-3</td><td>"Curious what you think — happy to send if relevant."</td><td>Free box + clinical questions doc if interested</td></tr>
+  </table>
+
+  <div class="callout"><strong>Gift seeding template (KakaoTalk DM):</strong><br><br>"안녕하세요 [이름]님, 저 알렉스입니다 — All Vital Organics라는 식품 브랜드를 시작했어요. 첫 제품 '샐러두유' 출시 기념으로 한 박스 보내드리고 싶은데, 주소 알려주실 수 있을까요? 그냥 드셔보시고, 좋으면 공유해주시면 감사하고 — 아니어도 괜찮습니다 :)"<br><br>※ <em>Critical: no asks. No "could you post." No "would love a story." That's not the deal.</em></div>
+
+  <h3>공동구매 (Group Buy) mechanics — pure performance, no upfront</h3>
+
+  <table>
+    <tr><th>Mechanic</th><th>Detail</th></tr>
+    <tr><td>Organizer cut</td><td>15-20% of gross. 15% for small org (100 boxes), 20% for proven org (300+ boxes)</td></tr>
+    <tr><td>Price to consumer</td><td>Same as Naver MSRP (₩45,000/box) — protect retail price</td></tr>
+    <tr><td>Settlement</td><td>After 공구 round closes · 7-14 day cycle typical · AVO pays organizer post-fulfillment</td></tr>
+    <tr><td>Volume range</td><td>100-500 boxes per round · Higher volume = more org margin negotiable</td></tr>
+    <tr><td>Communication</td><td>KakaoTalk direct · CC mom (재니스바스켓) for paper trail</td></tr>
+    <tr><td>Fulfillment</td><td>Daoom ships bulk to organizer → organizer distributes · OR Daoom drop-ships to each end consumer (organizer's customer list)</td></tr>
+    <tr><td>Organizer profile</td><td>Naver Cafe leaders · KakaoTalk room admins · 맘카페 mods · wellness community curators</td></tr>
+    <tr><td>Target: rounds/month</td><td>2-4 rounds in Month 1, scale to 6-8 by Month 3</td></tr>
+    <tr><td>Margin impact</td><td>Net ~₩22-25K/box (vs ₩31K Naver direct) — but acquisition cost = ₩0</td></tr>
+  </table>
+
+  <h3>Press list — 5-10 outreach contacts, all free</h3>
+  <table>
+    <tr><th>Outlet</th><th>Target editor / desk</th><th>Angle</th></tr>
+    <tr><td>마이몸·마이브 (My Body My Vibe)</td><td>Editorial / wellness desk</td><td>Founder discovery voice angle</td></tr>
+    <tr><td>코메디닷컴</td><td>식품 / 영양 데스크</td><td>3-gen Korean food heritage angle</td></tr>
+    <tr><td>매일경제 푸드</td><td>식품 산업 데스크</td><td>Korean indie brand vs imported brands</td></tr>
+    <tr><td>식품음료신문</td><td>제품 출시 / 신생 브랜드</td><td>유기농 동결건조 18종 spec angle</td></tr>
+    <tr><td>Folin (폴인)</td><td>Korean wellness storytelling</td><td>1000일 lived-proof angle</td></tr>
+    <tr><td>Wellness Korea / Glow Pick</td><td>Inner beauty / food angle</td><td>식이섬유 5g + 18 plants daily ritual</td></tr>
+    <tr><td>Korean YouTube wellness creators</td><td>식이요법, 자연식 채널</td><td>1000-day book + grandfather 38-year ideology</td></tr>
+    <tr><td>The Korea Herald (영문)</td><td>Lifestyle / food</td><td>For US export prep · "Korean indie wellness brand"</td></tr>
+  </table>
+
+  <h3>Future SKU strategy — Wadiz (와디즈) for Phyto Complete launch</h3>
+  <p class="lead">Salad Soymilk launches on Naver/Coupang. <strong>Next SKU (Phyto Complete or Pure Protein) launches via Wadiz first</strong>, then transitions to Naver/Coupang.</p>
+
+  <table>
+    <tr><th>Stage</th><th>What</th><th>Timing</th></tr>
+    <tr><td>Pre-Wadiz waitlist build</td><td>Free Naver Smartstore signup form · IG announcement · email list build via current Salad Soymilk customers</td><td>30-60 days before Wadiz launch</td></tr>
+    <tr><td>Wadiz launch</td><td>Crowdfunding campaign · 14-30 days · early-bird 30% off → standard 20% off → bundles</td><td>30 days</td></tr>
+    <tr><td>Wadiz platform fee</td><td>9-13% on funded amount · No COGS until backers pay</td><td>Per campaign</td></tr>
+    <tr><td>Production trigger</td><td>Once funding goal hit, place production order with Daoom · Backers receive 4-8 weeks post-campaign</td><td>Day +14-30 of campaign</td></tr>
+    <tr><td>Post-Wadiz transition</td><td>Move to Naver Smartstore + Coupang at standard MSRP · Wadiz-exclusive bundles retired</td><td>Wadiz +60 days</td></tr>
+    <tr><td>Margin model</td><td>Wadiz: net ₩15-20K/box (early bird) → ₩19-21K (standard) · Lower than Naver (₩31K) but funds new SKU production zero-cash-down</td><td>—</td></tr>
+  </table>
+
+  <div class="callout"><strong>Why Wadiz for new SKUs and not Naver direct:</strong> Wadiz lets us validate demand for a new SKU and fund the production batch (40K MOQ) with backer money, not our own capital. We trade margin for cash-flow safety. For Salad Soymilk we already have inventory — no need.</div>
+
+  <h3>UGC strategy — seed, wait, repost, recognize, grow</h3>
+  <table>
+    <tr><th>Step</th><th>Owner</th><th>What</th></tr>
+    <tr><td>1. Seed</td><td>Alex</td><td>50 free boxes go out Week 1-2 (gift seeding)</td></tr>
+    <tr><td>2. Wait</td><td>—</td><td>2-3 weeks · don't bug recipients · let it breathe</td></tr>
+    <tr><td>3. Monitor</td><td>Justin</td><td>Track tags · @allvitalorganics mentions · #와일드그린즈 #샐러두유 #AVO</td></tr>
+    <tr><td>4. Permission ask</td><td>Alex</td><td>DM creator: "감사합니다! 저희 채널에 repost해도 될까요?" — get screenshot consent</td></tr>
+    <tr><td>5. Repost</td><td>Dawon (visual layout)</td><td>Preserve creator handle prominently · Add light intro caption</td></tr>
+    <tr><td>6. Recognize</td><td>Alex</td><td>Send thank-you DM · Add to "AVO friends" list (future early access to new SKUs)</td></tr>
+    <tr><td>7. Grow</td><td>All</td><td>UGC compounds — each post seeds 2-3 more views/follows</td></tr>
+  </table>
+
+  <h3>Weekly marketing cadence (after launch)</h3>
+  <table>
+    <tr><th>Day</th><th>Action</th><th>Owner</th></tr>
+    <tr><td>Mon</td><td>Episode N Reel posted 8pm · Weekly review of last week's ad performance</td><td>Alex post / Justin review</td></tr>
+    <tr><td>Tue</td><td>Naver Blog post · 1 new gift seed batch (5-10 contacts)</td><td>Alex</td></tr>
+    <tr><td>Wed</td><td>Reel N's Carousel adaptation posted · Reply to all DMs and comments</td><td>Alex content / Justin engagement</td></tr>
+    <tr><td>Thu</td><td>Episode N+1 Reel posted 8pm</td><td>Alex post</td></tr>
+    <tr><td>Fri</td><td>Naver Cafe engagement (5-10 community replies) · Press email batch if a hook exists</td><td>Justin / Alex</td></tr>
+    <tr><td>Sat-Sun</td><td>Story-only · UGC repost · Behind-the-scenes</td><td>Alex</td></tr>
+  </table>
+
+  <h3>KPIs — what we measure weekly</h3>
+  <table>
+    <tr><th>Metric</th><th>Target (Month 1)</th><th>Target (Month 3)</th></tr>
+    <tr><td>Total boxes sold</td><td>200+ (₩9M revenue)</td><td>500+ (₩22M revenue)</td></tr>
+    <tr><td>Customer Acquisition Cost</td><td>≤₩7,500 / order (incl. all paid)</td><td>≤₩5,000</td></tr>
+    <tr><td>Organic-to-paid revenue ratio</td><td>≥60% organic</td><td>≥75% organic</td></tr>
+    <tr><td>IG followers</td><td>+500-800</td><td>2,500-3,500</td></tr>
+    <tr><td>Reels avg views</td><td>1,500-3,000</td><td>5,000-15,000</td></tr>
+    <tr><td>공구 rounds executed</td><td>2-4</td><td>6-8</td></tr>
+    <tr><td>Press pickups</td><td>1-2</td><td>3-5</td></tr>
+    <tr><td>UGC posts (tagged)</td><td>5-10</td><td>20-30</td></tr>
+    <tr><td>Repeat purchase rate</td><td>10-15%</td><td>25-30%</td></tr>
+  </table>
 </section>
 
 <section class="module" id="m07">
@@ -723,10 +1057,52 @@ footer {
     <span class="bignum">07</span>
     <div class="titles">
       <h2>Product function<span class="kr">제품 기능</span></h2>
-      <div class="meta">SKU pipeline · R&D · packaging · 식약처 · <span class="module-status pending">building</span></div>
+      <div class="meta">SKU pipeline · R&D · packaging · 식약처 · iteration · <span class="module-status live">live</span></div>
     </div>
   </div>
-  <p class="lead">Pipeline: Wild Greens Salad Soymilk v2 (15g fiber) · Wild Greens Phyto Complete · Pure Organic Protein · Grass-fed Colostrum + future Functional Wholefood SKUs.</p>
+
+  <p class="lead">3-level architecture (per <a href="https://allvitalorganics.github.io/avo-brand-narrative/" target="_blank">Brand Narrative</a>): Core Food (theory) → Wild Greens + Functional Wholefood (lines) → individual SKUs. New SKU launches one at a time, validated before scale.</p>
+
+  <h3>SKU pipeline</h3>
+  <table>
+    <tr><th>SKU</th><th>Line</th><th>Status</th><th>Target launch</th></tr>
+    <tr><td><strong>Wild Greens Salad Soymilk v1</strong></td><td>Wild Greens</td><td>LIVE</td><td>2026.05.16</td></tr>
+    <tr><td>Wild Greens Salad Soymilk v2 (15g fiber)</td><td>Wild Greens</td><td>R&D — repackage + +10g 식이섬유 추가</td><td>Q4 2026</td></tr>
+    <tr><td>Wild Greens Phyto Complete (powder)</td><td>Wild Greens</td><td>R&D — prototype iteration</td><td>Q4 2026 / Q1 2027 · via Wadiz</td></tr>
+    <tr><td>Pure Organic Plant Protein</td><td>Functional Wholefood</td><td>Sourcing — EU suppliers (PIOWALD/MEURENS/ROQUETTE)</td><td>Q1-Q2 2027 · via Wadiz</td></tr>
+    <tr><td>Pure Grass-fed Colostrum</td><td>Functional Wholefood</td><td>Investigating — claim discipline + sourcing</td><td>Q2 2027 · TBD</td></tr>
+    <tr><td>Ginger Bloat (function-named)</td><td>Functional Wholefood</td><td>Concept</td><td>Year 2+</td></tr>
+    <tr><td>Lime Sleep (function-named)</td><td>Functional Wholefood</td><td>Concept</td><td>Year 2+</td></tr>
+  </table>
+
+  <h3>R&D rhythm</h3>
+  <table>
+    <tr><th>Cadence</th><th>What</th><th>Owner</th></tr>
+    <tr><td>Monthly</td><td>Prototype review · taste test · package mockup feedback</td><td>Alex + Justin + Daoom R&D</td></tr>
+    <tr><td>Quarterly</td><td>SKU pipeline review · de-prioritize anything not converting</td><td>Alex (decision)</td></tr>
+    <tr><td>Ad hoc</td><td>Customer-feedback-driven iteration (e.g., flavor adjustments)</td><td>Alex briefs Daoom</td></tr>
+  </table>
+
+  <h3>식약처 regulatory checklist (per new SKU)</h3>
+  <table>
+    <tr><th>Step</th><th>Owner</th><th>Lead time</th></tr>
+    <tr><td>식품유형 분류 결정</td><td>세무사 / 식약처 consult</td><td>1주</td></tr>
+    <tr><td>품목보고 신청</td><td>대학두유 (제조원) or 다움 if powder</td><td>4-8주</td></tr>
+    <tr><td>품목보고번호 발급 확인</td><td>세무사 / 식약처</td><td>—</td></tr>
+    <tr><td>영양성분 분석시험성적서 (3rd party 시험소)</td><td>Justin</td><td>2-4주</td></tr>
+    <tr><td>유기가공식품 인증 신청 (해당 시)</td><td>국립농산물품질관리원</td><td>2-3개월</td></tr>
+    <tr><td>최종 라벨 식약처 가이드 검토</td><td>세무사 또는 전문 컨설턴트</td><td>1-2주</td></tr>
+  </table>
+
+  <h3>Packaging iteration framework</h3>
+  <p style="font-size:13px;">Each new SKU goes through 3 prototype rounds before printing:</p>
+  <ul style="list-style:none; max-width:760px;">
+    <li style="padding:6px 0 6px 16px; position:relative; font-size:13px;"><span style="position:absolute;left:0;color:var(--forest);">·</span> <strong>P1</strong>: ingredient + claim hierarchy correct (legal / 식약처 audit pass)</li>
+    <li style="padding:6px 0 6px 16px; position:relative; font-size:13px;"><span style="position:absolute;left:0;color:var(--forest);">·</span> <strong>P2</strong>: visual identity locked (Dawon lead) — type, color, imagery</li>
+    <li style="padding:6px 0 6px 16px; position:relative; font-size:13px;"><span style="position:absolute;left:0;color:var(--forest);">·</span> <strong>P3</strong>: print proof + 5-person taste / read test before production</li>
+  </ul>
+
+  <p style="font-size:12.5px; color:var(--muted);">Reference: <a href="https://allvitalorganics.github.io/avo-labels/" target="_blank">avo-labels</a> — production label spec for all 4 SKUs.</p>
 </section>
 
 <section class="module" id="m08">
@@ -864,10 +1240,114 @@ footer {
     <span class="bignum">09</span>
     <div class="titles">
       <h2>Finance function<span class="kr">재무 기능</span></h2>
-      <div class="meta">Cash flow · settlement · COGS · tax · monthly P&L · <span class="module-status pending">building</span></div>
+      <div class="meta">Margin matrix · cash flow · settlement · COGS · monthly P&L · tax · <span class="module-status live">live</span></div>
     </div>
   </div>
-  <p class="lead">Critical Day-1: settlement schedules, COGS tracking, monthly close, 부가세 신고 schedule, 종합소득세 / 법인세 timing, 자비스/캐시노트 setup.</p>
+
+  <p class="lead">Salad Soymilk unit economics, channel-by-channel margin, settlement timing, monthly close template, tax calendar. Justin owns daily reconciliation. Alex owns monthly close + investor-ready financials.</p>
+
+  <h3>Per-box unit economics (Salad Soymilk)</h3>
+  <table>
+    <tr><th>Component</th><th>Value</th><th>Notes</th></tr>
+    <tr><td>Cost per pouch (COGS)</td><td>~₩600</td><td>From 대학두유 production</td></tr>
+    <tr><td>Pouches per box</td><td>15</td><td>Standard SKU pack</td></tr>
+    <tr><td><strong>COGS per box</strong></td><td><strong>~₩9,000</strong></td><td>15 × ₩600</td></tr>
+    <tr><td>Daoom fulfillment (pick/pack/ship)</td><td>~₩3,000 / box</td><td>Estimate — to confirm with Daoom</td></tr>
+    <tr><td>MSRP (Naver)</td><td>₩45,000</td><td>Premium positioning · don't drop</td></tr>
+    <tr><td>MSRP (Coupang)</td><td>₩47,000</td><td>+~4% to cover higher Coupang fees</td></tr>
+    <tr><td>Total inventory available</td><td>2,666 boxes (40,000 pouches)</td><td>From 대학두유 production batch</td></tr>
+    <tr><td>Total COGS (already paid by 대학두유)</td><td>~₩20.4M (~$15K)</td><td>Owed to 대학두유 by end of 2026 (deferred)</td></tr>
+    <tr><td>Total revenue ceiling (100% sell-through Naver)</td><td>~₩119.97M (~$87K)</td><td>2,666 × ₩45,000</td></tr>
+    <tr><td>Theoretical gross profit at 100% sell-through</td><td>~₩90M (~$65K)</td><td>Before marketing, settlement fees</td></tr>
+  </table>
+
+  <h3>Margin matrix — per box, all channels</h3>
+  <p class="lead">Read this table when deciding which channel to push or accept. Naver Smartstore is highest direct margin. 공구 trades margin for free acquisition. 홈쇼핑 high-share slots erode margin sharply — only worth taking for huge volume.</p>
+
+  <table>
+    <tr><th>Channel</th><th>Sale ₩</th><th>Channel fee</th><th>Logistics</th><th>Org/Connector</th><th>Net to AVO</th><th>Margin %</th></tr>
+    <tr><td><strong>자사몰 DTC</strong></td><td>45,000</td><td>1,575 (3.5% PG)</td><td>3,000</td><td>—</td><td><strong>₩31,425</strong></td><td><strong>69.8%</strong></td></tr>
+    <tr><td><strong>Naver Smartstore</strong></td><td>45,000</td><td>1,782 (3.96% 영세)</td><td>3,000</td><td>—</td><td><strong>₩31,218</strong></td><td><strong>69.4%</strong></td></tr>
+    <tr><td><strong>Coupang Marketplace</strong></td><td>47,000</td><td>2,820 (6.0%)</td><td>3,000</td><td>—</td><td><strong>₩32,180</strong></td><td><strong>68.5%</strong></td></tr>
+    <tr><td><strong>홈쇼핑 (low-deduction slot)</strong></td><td>45,000</td><td>4,050-4,950 (9-11%)</td><td>3,000</td><td>—</td><td><strong>₩28,050-28,950</strong></td><td><strong>62-64%</strong></td></tr>
+    <tr><td><strong>공동구매 (15% org cut)</strong></td><td>45,000</td><td>1,782</td><td>3,000</td><td>6,750 (15%)</td><td><strong>₩24,468</strong></td><td><strong>54.4%</strong></td></tr>
+    <tr><td><strong>공동구매 (20% org cut)</strong></td><td>45,000</td><td>1,782</td><td>3,000</td><td>9,000 (20%)</td><td><strong>₩22,218</strong></td><td><strong>49.4%</strong></td></tr>
+    <tr><td><strong>마켓컬리 (30-35% wholesale)</strong></td><td>45,000</td><td>13,500-15,750</td><td>Kurly handles</td><td>—</td><td><strong>~₩22,500</strong></td><td><strong>~50%</strong></td></tr>
+    <tr><td><strong>Wadiz — standard tier (20% off)</strong></td><td>36,000</td><td>3,240-4,680 (9-13%)</td><td>3,000</td><td>—</td><td><strong>₩19,320-20,760</strong></td><td><strong>54-58%</strong></td></tr>
+    <tr><td><strong>홈쇼핑 (30% rev share)</strong></td><td>45,000</td><td>13,500 (30%)</td><td>3,000</td><td>—</td><td><strong>₩19,500</strong></td><td><strong>43%</strong></td></tr>
+    <tr><td><strong>Wadiz — early bird (30% off)</strong></td><td>31,500</td><td>2,835-4,095 (9-13%)</td><td>3,000</td><td>—</td><td><strong>₩15,405-16,665</strong></td><td><strong>49-53%</strong></td></tr>
+    <tr><td style="color:var(--warn);"><strong>홈쇼핑 (45% rev share)</strong></td><td>45,000</td><td>20,250 (45%)</td><td>3,000</td><td>—</td><td style="color:var(--warn);"><strong>₩12,750</strong></td><td style="color:var(--warn);"><strong>28%</strong></td></tr>
+  </table>
+
+  <div class="callout warn"><strong>Floor rule:</strong> any channel under <strong>40% net margin</strong> requires written justification before AVO commits. The Salad Soymilk story (premium ingredients, EU sourcing future, family heritage) is destroyed by aggressive discounting.</div>
+
+  <h3>Settlement timing — cash flow reality</h3>
+  <table>
+    <tr><th>Channel</th><th>Settlement schedule</th><th>Cash gap from sale</th></tr>
+    <tr><td>Naver Smartstore (영세)</td><td>D+1 정산 · 매주 정기 송금</td><td>1-7 days · best cash cycle</td></tr>
+    <tr><td>Coupang Marketplace (3P standard)</td><td>월 2회 · 15일 + 마감일 +X일</td><td>15-30 days</td></tr>
+    <tr><td>Coupang Rocket Growth (FLC)</td><td>월 2회 · 결제 후 D+15</td><td>15-30 days</td></tr>
+    <tr><td>공동구매</td><td>공구 round 종료 후 7-14일</td><td>1-3 weeks</td></tr>
+    <tr><td>Wadiz</td><td>캠페인 종료 후 2-3주 · 정산 시 9-13% 수수료 제외</td><td>4-6 weeks</td></tr>
+    <tr><td>홈쇼핑</td><td>방송 종료 후 30-45일</td><td>4-6 weeks</td></tr>
+    <tr><td>마켓컬리</td><td>월 2회 또는 월 1회 (입점 형태에 따라)</td><td>15-30 days</td></tr>
+  </table>
+
+  <div class="callout"><strong>Cash flow implication:</strong> Naver Smartstore is the fastest cash channel — gives us operating runway. Avoid channels with 30+ day settlement until we have buffer cash. Daoom fulfillment fees may be due before Coupang/Wadiz pay us — Justin tracks weekly to avoid cash crunch.</div>
+
+  <h3>Monthly P&L template</h3>
+  <table>
+    <tr><th>Line item</th><th>Source</th><th>Owner</th></tr>
+    <tr><td><strong>Revenue (gross)</strong></td><td>Sum of: Naver dashboard + Coupang dashboard + 공구 settlements + (Wadiz when active)</td><td>Justin pulls weekly · Alex confirms monthly</td></tr>
+    <tr><td>– Channel fees</td><td>Per channel as % of sales</td><td>Justin</td></tr>
+    <tr><td>– Refunds / returns</td><td>Naver + Coupang refund logs</td><td>Justin</td></tr>
+    <tr><td><strong>Net revenue</strong></td><td>Gross – fees – refunds</td><td>—</td></tr>
+    <tr><td>– COGS (₩9K × boxes shipped)</td><td>From Daoom shipment log</td><td>Justin</td></tr>
+    <tr><td>– Fulfillment fees (Daoom)</td><td>Daoom monthly invoice</td><td>Justin</td></tr>
+    <tr><td><strong>Gross profit</strong></td><td>Net revenue – COGS – fulfillment</td><td>—</td></tr>
+    <tr><td>– Marketing spend (paid ads + tools + gift seeding)</td><td>Meta + Naver SA + Google + Notion etc.</td><td>Alex</td></tr>
+    <tr><td>– Customer acquisition cost (CAC)</td><td>Marketing spend / new customers</td><td>Alex calc</td></tr>
+    <tr><td>– Operating expenses (subscription, shipping mistakes, misc)</td><td>Bank statement review</td><td>Alex</td></tr>
+    <tr><td><strong>Operating profit / loss</strong></td><td>Gross profit – marketing – opex</td><td>—</td></tr>
+    <tr><td>– 부가세 reserve (10% of net revenue)</td><td>Set aside monthly</td><td>Alex / 세무사</td></tr>
+    <tr><td><strong>Cash retained</strong></td><td>Op profit – 부가세 reserve</td><td>—</td></tr>
+  </table>
+
+  <h3>Tax calendar — Korean obligations</h3>
+  <table>
+    <tr><th>Tax</th><th>Filing schedule</th><th>Owner</th><th>Notes</th></tr>
+    <tr><td>부가세 (VAT) — 일반과세자</td><td>1/25, 4/25, 7/25, 10/25 (quarterly)</td><td>세무사 + Alex</td><td>Set aside 10% of net revenue monthly</td></tr>
+    <tr><td>법인세 (Corporate income tax) — 재니스바스켓 법인</td><td>3월 (사업연도 종료 후 3개월 이내)</td><td>세무사</td><td>Annual close</td></tr>
+    <tr><td>원천세 (Withholding) — if hiring</td><td>매월 10일</td><td>세무사</td><td>Not relevant pre-hire</td></tr>
+    <tr><td>지방소득세 / 사업소득세</td><td>법인세 신고와 함께</td><td>세무사</td><td>—</td></tr>
+  </table>
+
+  <p style="font-size:12.5px; color:var(--muted);">※ 재니스바스켓(주)는 법인사업자이므로 법인세 신고. 새 AVO 법인 설립 시 별도 신고. 세무사 fee: ~₩30-50만원/월 표준.</p>
+
+  <h3>Marketing CAC tracking — weekly</h3>
+  <table>
+    <tr><th>Metric</th><th>Formula</th><th>Target Month 1</th></tr>
+    <tr><td>Total marketing spend</td><td>Sum: Meta + Naver SA + Google + tools + gift seeding</td><td>≤₩2.5M/month</td></tr>
+    <tr><td>New customers</td><td>Naver + Coupang first-time orders</td><td>200+</td></tr>
+    <tr><td>Blended CAC</td><td>Marketing spend / new customers</td><td>≤₩12,000 / customer</td></tr>
+    <tr><td>Paid-only CAC</td><td>Paid ad spend / customers from paid attribution</td><td>≤₩25,000 / customer</td></tr>
+    <tr><td>Organic CAC</td><td>(Cost of content time + free seeding) / customers from organic</td><td>Track time invested · target near-zero $ cost</td></tr>
+  </table>
+
+  <h3>Runway projection (current state)</h3>
+  <table>
+    <tr><th>Scenario</th><th>Month 1</th><th>Month 3</th><th>Month 6</th></tr>
+    <tr><td>Sell-through (boxes/mo)</td><td>200</td><td>500</td><td>800</td></tr>
+    <tr><td>Gross revenue</td><td>₩9M</td><td>₩22.5M</td><td>₩36M</td></tr>
+    <tr><td>Net revenue (after fees + refunds)</td><td>~₩8.4M</td><td>~₩21M</td><td>~₩33.5M</td></tr>
+    <tr><td>COGS + fulfillment</td><td>₩2.4M</td><td>₩6M</td><td>₩9.6M</td></tr>
+    <tr><td>Gross profit</td><td>~₩6M</td><td>~₩15M</td><td>~₩23.9M</td></tr>
+    <tr><td>Marketing spend</td><td>₩2.5M</td><td>₩2.5M</td><td>₩2M</td></tr>
+    <tr><td>Operating profit / loss</td><td>~₩3.5M positive</td><td>~₩12.5M positive</td><td>~₩21.9M positive</td></tr>
+    <tr><td>대학두유 repayment scheduled</td><td>Building reserve</td><td>Building reserve</td><td>~₩20.4M owed by end-2026</td></tr>
+  </table>
+
+  <div class="callout"><strong>Conservative read:</strong> if we hit Month 6 = 800 boxes/mo we're operating-profitable + paying down 대학두유. If Month 1 is 100 boxes (50% of conservative target), we're still positive but slower. 대학두유 repayment by end-2026 is achievable even at the slower pace.</div>
 </section>
 
 <section class="module" id="m10">
@@ -875,10 +1355,75 @@ footer {
     <span class="bignum">10</span>
     <div class="titles">
       <h2>Management cadence<span class="kr">매니지먼트 리듬</span></h2>
-      <div class="meta">Standups · weekly · monthly · quarterly · <span class="module-status pending">building</span></div>
+      <div class="meta">Standups · weekly · monthly · quarterly · OKRs · <span class="module-status live">live</span></div>
     </div>
   </div>
-  <p class="lead">Detailed agendas + templates for daily standup, weekly review, monthly retro, quarterly planning. OKR setting.</p>
+
+  <p class="lead">A 3-person team doesn't need heavy process. Just enough rhythm that nothing falls through. 4 cadences: daily / weekly / monthly / quarterly.</p>
+
+  <h3>Daily standup · 15 min · 9:00am KST</h3>
+  <div class="checklist">
+    <div class="checklist-title">Agenda</div>
+    <ul>
+      <li>Yesterday: what did I close? <span class="owner">A · J</span></li>
+      <li>Today: what's the one thing I will close? <span class="owner">A · J</span></li>
+      <li>Blockers? (anything that needs the other person to unblock) <span class="owner">A · J</span></li>
+      <li>Customer pulse: any complaint pattern / great review I saw yesterday? <span class="owner">A</span></li>
+      <li>Numbers: yesterday's orders + ad spend snapshot <span class="owner">J</span></li>
+    </ul>
+  </div>
+
+  <h3>Weekly review · 60 min · Mon 10:00am KST</h3>
+  <div class="checklist">
+    <div class="checklist-title">Agenda</div>
+    <ul>
+      <li>Last week numbers: total boxes, revenue, CAC, return rate, IG growth, Reels performance <span class="owner">J</span></li>
+      <li>Customer themes: top 3 complaints, top 3 compliments, top 3 questions <span class="owner">A</span></li>
+      <li>Channel breakdown: Naver vs Coupang vs 공구 — anything notable</li>
+      <li>Marketing: what's working, what isn't · adjust ad spend allocation</li>
+      <li>Content: next 2 episodes — film / post schedule</li>
+      <li>Product: any iteration signals from customers?</li>
+      <li>Family / partners: 김형서 대표 (Daoom) · mom · 김지원 connector updates</li>
+      <li>This week's 3 priorities · one per person <span class="owner">A · J · D</span></li>
+    </ul>
+  </div>
+
+  <h3>Monthly retro · 2 hr · last Fri of month</h3>
+  <div class="checklist">
+    <div class="checklist-title">Agenda</div>
+    <ul>
+      <li>Financial close: revenue, expenses, gross margin, CAC, runway · <a href="#m09" style="color:var(--forest);">Section 09 template</a></li>
+      <li>What worked? (continue/double-down list)</li>
+      <li>What didn't? (stop/change list)</li>
+      <li>What did we learn? (new tactical knowledge)</li>
+      <li>Customer cohort: re-purchase rate, churn, NPS-ish signals</li>
+      <li>SKU pipeline: any deprioritize / accelerate decisions?</li>
+      <li>Next month's 3 OKRs · objective + 2-3 key results each</li>
+    </ul>
+  </div>
+
+  <h3>Quarterly planning · half-day · last week of Q</h3>
+  <div class="checklist">
+    <div class="checklist-title">Agenda</div>
+    <ul>
+      <li>Q retrospective (3-month version of monthly)</li>
+      <li>Strategic Q for next quarter: what big bet are we making?</li>
+      <li>SKU roadmap update (next 6-12 months)</li>
+      <li>Channel expansion decisions (add 마켓컬리? 홈쇼핑? Wadiz?)</li>
+      <li>Hiring / consulting decisions (we still 3? add part-time?)</li>
+      <li>Investment readiness assessment (are we close to a raise trigger?)</li>
+      <li>Family / partner alignment (mom, dad, grandfather updates)</li>
+    </ul>
+  </div>
+
+  <h3>OKR template — Month 1 (May 16 → Jun 30)</h3>
+  <table>
+    <tr><th>Objective</th><th>Key Results</th></tr>
+    <tr><td>Validate Salad Soymilk product-market fit</td><td>200+ boxes sold · 4.5+ avg rating · 25%+ repeat rate by end-of-Month-2</td></tr>
+    <tr><td>Launch founder discovery voice on Instagram</td><td>Episodes 01-08 posted · 500+ IG followers · 3+ UGC posts from gift seeding</td></tr>
+    <tr><td>Lock supplier strategy for SKU 2</td><td>5 EU suppliers contacted · 2+ replied with COA · 1 selected for Phyto Complete launch · Importer-of-record decided</td></tr>
+    <tr><td>Operating profitability month 1</td><td>Net revenue > marketing + opex · CAC < ₩12K · cash reserve growing</td></tr>
+  </table>
 </section>
 
 <section class="module" id="m11">
@@ -886,10 +1431,52 @@ footer {
     <span class="bignum">11</span>
     <div class="titles">
       <h2>Investment / Scaling<span class="kr">투자 / 확장</span></h2>
-      <div class="meta">When to raise · pitch prep · due diligence · cap table · <span class="module-status pending">building</span></div>
+      <div class="meta">Signal triggers · pitch prep · DD readiness · cap table · <span class="module-status live">live</span></div>
     </div>
   </div>
-  <p class="lead">Triggers for raise (revenue + traction signals), pitch deck prep (links to existing intro deck), DD-ready bookkeeping standards, cap table model with AVO Ventures LLC + Korean entity.</p>
+
+  <p class="lead">Default: <strong>don't raise until you have traction signal.</strong> Korean food brands raise too early and burn dilution. AVO's plan: bootstrap to Month 6 revenue ≥₩30M/mo, then evaluate.</p>
+
+  <h3>Raise signal triggers — when to start the conversation</h3>
+  <table>
+    <tr><th>Trigger</th><th>Threshold</th><th>What it signals</th></tr>
+    <tr><td>Monthly revenue ≥₩30M for 3 months</td><td>~700+ boxes/month sustained</td><td>Product-market fit · ready to scale ad spend</td></tr>
+    <tr><td>Repeat purchase rate ≥30%</td><td>—</td><td>Customer love validated</td></tr>
+    <tr><td>SKU 2 (Phyto Complete) prototype validated</td><td>Wadiz hits funding goal</td><td>Brand can do more than one SKU</td></tr>
+    <tr><td>Family + entity structure locked</td><td>Korean entity formed</td><td>Cap-table clean for investors</td></tr>
+    <tr><td>Inbound investor interest</td><td>3+ qualified Korean VCs / wellness angels reaching out</td><td>Market validates the thesis</td></tr>
+  </table>
+
+  <h3>Pitch prep — already in good shape</h3>
+  <table>
+    <tr><th>Asset</th><th>Status</th><th>URL</th></tr>
+    <tr><td>Brand narrative (the ideology + heritage)</td><td>Live</td><td><a href="https://allvitalorganics.github.io/avo-brand-narrative/" target="_blank">avo-brand-narrative</a></td></tr>
+    <tr><td>Intro deck (vendor / influencer / investor)</td><td>Live</td><td><a href="https://allvitalorganics.github.io/avo-intro-deck/" target="_blank">avo-intro-deck</a></td></tr>
+    <tr><td>Labels & production spec</td><td>Live</td><td><a href="https://allvitalorganics.github.io/avo-labels/" target="_blank">avo-labels</a></td></tr>
+    <tr><td>Episodes / brand voice in action</td><td>Live</td><td><a href="https://allvitalorganics.github.io/avo-episodes/" target="_blank">avo-episodes</a></td></tr>
+    <tr><td>Operating system (this doc)</td><td>Live</td><td><a href="https://allvitalorganics.github.io/avo-os/" target="_blank">avo-os</a></td></tr>
+    <tr><td>Customer traction data</td><td>Build month-by-month</td><td>Naver + Coupang dashboard exports</td></tr>
+    <tr><td>Financial model (M1-M12 projection)</td><td>Build month 3</td><td>To draft</td></tr>
+  </table>
+
+  <h3>DD-readiness — keep your books clean from day 1</h3>
+  <ul style="list-style:none; max-width:820px;">
+    <li style="padding:6px 0 6px 16px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Monthly P&L closed by 5th of next month · automated as much as possible</li>
+    <li style="padding:6px 0 6px 16px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> All vendor invoices stored chronologically (Mercury attachments / Google Drive)</li>
+    <li style="padding:6px 0 6px 16px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Customer cohort analysis maintained · 첫 구매월별 retention table</li>
+    <li style="padding:6px 0 6px 16px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Channel-by-channel CAC and LTV tracking</li>
+    <li style="padding:6px 0 6px 16px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Cap table cleanly documented (US AVO Ventures LLC + Korean entity)</li>
+    <li style="padding:6px 0 6px 16px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> All contracts (Daoom supply, EU ingredient supplier, channel agreements) in single archive</li>
+  </ul>
+
+  <h3>Target investor profile</h3>
+  <table>
+    <tr><th>Type</th><th>Examples (target list to build)</th><th>Why</th></tr>
+    <tr><td>Korean wellness/food VC</td><td>Korea Investment Partners · Premier Partners · 카카오벤처스 (consumer fund)</td><td>Korean market expertise</td></tr>
+    <tr><td>Korean wellness/food angel</td><td>Successful 1세대 Korean wellness founders</td><td>Network effects · KOL leverage</td></tr>
+    <tr><td>US wellness DTC operator angel</td><td>Founders of similar US brands (Hims, Athletic Greens)</td><td>For future US expansion</td></tr>
+    <tr><td>Strategic (Korean food retailer)</td><td>SSG / Kurly / Coupang corporate development</td><td>Distribution + capital combined</td></tr>
+  </table>
 </section>
 
 <section class="module" id="m12">
@@ -897,10 +1484,67 @@ footer {
     <span class="bignum">12</span>
     <div class="titles">
       <h2>Tools / Stack<span class="kr">도구 / 스택</span></h2>
-      <div class="meta">Every tool, login, integration · <span class="module-status pending">building</span></div>
+      <div class="meta">All tools · who owns the login · monthly cost · <span class="module-status live">live</span></div>
     </div>
   </div>
-  <p class="lead">Naver Smartstore · Coupang Wing · KakaoTalk Channel · Meta Ads Manager · Google Ads · Naver 검색 광고 · 홈택스 · 자비스 · Notion · Slack · GitHub · Figma · etc. Logins + responsibilities mapped.</p>
+
+  <p class="lead">Every tool we use. Owner of credentials, monthly cost, what it does. Keep this current — when a tool changes, update here.</p>
+
+  <h3>Sales / Channel</h3>
+  <table>
+    <tr><th>Tool</th><th>What for</th><th>Owner</th><th>Cost</th></tr>
+    <tr><td>Naver Smartstore (Seller Center)</td><td>Korea #1 ecommerce channel</td><td>Justin (operational) / 재니스바스켓 (legal)</td><td>3.96% per sale</td></tr>
+    <tr><td>Coupang Wing</td><td>Korea #2 ecommerce channel</td><td>Justin</td><td>~6% per sale</td></tr>
+    <tr><td>Naver 검색광고 시스템</td><td>Naver SA paid campaigns</td><td>Justin</td><td>₩20K/day budget</td></tr>
+    <tr><td>KakaoTalk Channel @allvitalorganics</td><td>Customer service · broadcast · 공구 coord</td><td>Alex</td><td>Free</td></tr>
+  </table>
+
+  <h3>Marketing</h3>
+  <table>
+    <tr><th>Tool</th><th>What for</th><th>Owner</th><th>Cost</th></tr>
+    <tr><td>Meta Business Suite (FB + IG)</td><td>Organic posting + retargeting ads</td><td>Alex (organic) / Justin (paid)</td><td>₩25K/day ad budget</td></tr>
+    <tr><td>Google Ads</td><td>Brand defense search</td><td>Justin</td><td>₩10K/day</td></tr>
+    <tr><td>Naver Blog @allvitalorganics</td><td>SEO long-form content</td><td>Alex</td><td>Free</td></tr>
+    <tr><td>Wadiz (펀딩)</td><td>Future SKU launches</td><td>Justin (when active)</td><td>9-13% per campaign</td></tr>
+  </table>
+
+  <h3>Operations</h3>
+  <table>
+    <tr><th>Tool</th><th>What for</th><th>Owner</th><th>Cost</th></tr>
+    <tr><td>Daoom warehouse (KakaoTalk + email)</td><td>Inventory + fulfillment ops</td><td>Justin · Daoom warehouse team</td><td>~₩3K/box fulfillment</td></tr>
+    <tr><td>CJ 대한통운 or 한진택배 (운송장)</td><td>Shipping carrier</td><td>Daoom handles</td><td>Per-shipment</td></tr>
+    <tr><td>Google Sheets (order log)</td><td>Daily order tracking · weekly reconciliation</td><td>Justin</td><td>Free</td></tr>
+  </table>
+
+  <h3>Finance</h3>
+  <table>
+    <tr><th>Tool</th><th>What for</th><th>Owner</th><th>Cost</th></tr>
+    <tr><td>국민은행 법인통장 (재니스바스켓)</td><td>Korean operating account · settlement deposits</td><td>박정은 (legal) · Justin (operational visibility)</td><td>—</td></tr>
+    <tr><td>홈택스</td><td>부가세 / 법인세 신고</td><td>세무사 (outsourced) · Alex review</td><td>—</td></tr>
+    <tr><td>자비스 or 캐시노트</td><td>일별 자동 회계 · expense tracking</td><td>Alex</td><td>~₩50K/mo</td></tr>
+    <tr><td>Mercury (US AVO Ventures LLC)</td><td>US banking</td><td>Alex</td><td>Free tier</td></tr>
+    <tr><td>QuickBooks (US AVO Ventures LLC)</td><td>US bookkeeping when needed</td><td>Alex (long-term)</td><td>~$30/mo when activated</td></tr>
+  </table>
+
+  <h3>Brand / Content / Design</h3>
+  <table>
+    <tr><th>Tool</th><th>What for</th><th>Owner</th><th>Cost</th></tr>
+    <tr><td>Figma</td><td>Packaging · PDP · ad creative</td><td>Dawon · Alex view</td><td>Free tier or ~$15/mo Pro</td></tr>
+    <tr><td>Adobe Illustrator</td><td>Production label files</td><td>Dawon</td><td>~$25/mo</td></tr>
+    <tr><td>GitHub Pages (all AVO live docs)</td><td>brand-narrative · intro-deck · labels · episodes · os</td><td>Alex</td><td>Free</td></tr>
+    <tr><td>Notion</td><td>Internal team docs · meeting notes</td><td>Alex · Justin · Dawon shared</td><td>Free tier or ~$8/seat</td></tr>
+  </table>
+
+  <h3>Communication</h3>
+  <table>
+    <tr><th>Tool</th><th>What for</th><th>Owner</th><th>Cost</th></tr>
+    <tr><td>KakaoTalk team chat</td><td>Internal 3-person daily comms</td><td>Alex · Justin · Dawon</td><td>Free</td></tr>
+    <tr><td>Google Workspace (hello@allvitalorganics)</td><td>External email · Drive · Calendar</td><td>Alex</td><td>~$6/seat/mo when set up</td></tr>
+    <tr><td>Zoom / Google Meet</td><td>Weekly review · monthly retro</td><td>Justin schedule</td><td>Free</td></tr>
+  </table>
+
+  <h3>Total monthly tool spend estimate</h3>
+  <p style="font-size:14px;">~₩80-120K/month all-in once everything's running. Most expensive: 자비스/캐시노트 회계 (~₩50K). Most free: KakaoTalk + Google Workspace tier + Notion free. Within the $10K marketing budget allocation (~$500 for tools / 6 months).</p>
 </section>
 
 <section class="module" id="m13">
@@ -908,17 +1552,126 @@ footer {
     <span class="bignum">13</span>
     <div class="titles">
       <h2>Per-function crash course<span class="kr">기능별 학습 자료</span></h2>
-      <div class="meta">Korean ecommerce learning · 5 must-read items per function · <span class="module-status pending">building</span></div>
+      <div class="meta">Korean ecommerce + DTC learning · per-role <span class="module-status live">live</span></div>
     </div>
   </div>
-  <p class="lead">For each function, 5 must-read articles + 2 YouTube channels + 1 book to go from beginner to operational. Korean ecommerce-specific resources prioritized.</p>
+
+  <p class="lead">When something feels new — start here. Every function has a learning pack. Read 2-3 in any given week, not all at once.</p>
+
+  <h3>Marketing — for Alex (content + brand)</h3>
+  <table>
+    <tr><th>Resource</th><th>Why</th></tr>
+    <tr><td>The Hustle / Sam Parr — founder-voice longform pieces</td><td>Pacing of personal/discovery voice in DTC</td></tr>
+    <tr><td>Patagonia "Let My People Go Surfing" (book)</td><td>How quiet brand voice compounds for decades</td></tr>
+    <tr><td>Bryan Johnson Blueprint posts (X/Twitter + blog)</td><td>Aggressive transparency + protocol sharing as marketing</td></tr>
+    <tr><td>요시카 / 닥터지 / 매일유업 Selecs PDP teardowns (Korean)</td><td>How Korean wellness brands structure 기승전결 PDP</td></tr>
+    <tr><td>NoScroll News (subscribe — already on it)</td><td>Daily Korean + global wellness signal</td></tr>
+  </table>
+
+  <h3>Marketing — for Justin (performance + ops)</h3>
+  <table>
+    <tr><th>Resource</th><th>Why</th></tr>
+    <tr><td>Naver 검색광고 공식 가이드 + 모비온 블로그</td><td>Korean SA/DA mechanics</td></tr>
+    <tr><td>Common Thread Collective YouTube (David Herrmann)</td><td>Meta Ads structure for DTC at small budgets</td></tr>
+    <tr><td>Coupang Wing 셀러 도움말 + 카페 (셀러 커뮤니티)</td><td>Coupang-specific tactics</td></tr>
+    <tr><td>"Profit First" by Mike Michalowicz (book)</td><td>Bootstrapped financial discipline</td></tr>
+    <tr><td>Klaviyo + Triple Whale blogs</td><td>DTC analytics best practices</td></tr>
+  </table>
+
+  <h3>Operations</h3>
+  <table>
+    <tr><th>Resource</th><th>Why</th></tr>
+    <tr><td>"The Goal" by Eliyahu Goldratt</td><td>Bottleneck thinking — applicable to fulfillment</td></tr>
+    <tr><td>Korean 식약처 식품등의 표시기준 (행정규칙)</td><td>Regulatory ground truth</td></tr>
+    <tr><td>Fassto / Daoom 3PL operator blogs</td><td>How Korean 3PLs think about ops</td></tr>
+    <tr><td>Customer Support Operations on Intercom blog</td><td>CS pattern best practices</td></tr>
+  </table>
+
+  <h3>Finance</h3>
+  <table>
+    <tr><th>Resource</th><th>Why</th></tr>
+    <tr><td>홈택스 일반과세자 사업자 안내 (KR)</td><td>Korean tax 101</td></tr>
+    <tr><td>"Financial Intelligence for Entrepreneurs" by Karen Berman</td><td>Reading P&L · cash flow basics</td></tr>
+    <tr><td>SaaSOptics / ChartMogul blogs (cohort analysis)</td><td>Subscription / retention math (relevant for 정기구독)</td></tr>
+    <tr><td>YC blog: "Default Alive or Default Dead?"</td><td>Burn rate framework</td></tr>
+  </table>
+
+  <h3>Product / R&D</h3>
+  <table>
+    <tr><th>Resource</th><th>Why</th></tr>
+    <tr><td>"The Food Lab" by Kenji Lopez-Alt</td><td>Foundational food science for thinking about ingredients</td></tr>
+    <tr><td>Examine.com (free database)</td><td>Honest evidence reviews of ingredients (colostrum, etc.)</td></tr>
+    <tr><td>NSF / GFSI / 식약처 신청 매뉴얼</td><td>Certification process</td></tr>
+    <tr><td>닥터지 / 동원 F&B 신제품 출시 사례</td><td>How established Korean food brands launch new SKUs</td></tr>
+  </table>
+
+  <h3>Brand / Voice (Alex's discovery voice)</h3>
+  <table>
+    <tr><th>Reference</th><th>Why</th></tr>
+    <tr><td>Bryan Johnson · Blueprint posts</td><td>First-person rigor without polish</td></tr>
+    <tr><td>Andrew Huberman · Huberman Lab podcast intros</td><td>Honest mention of what's known + unknown</td></tr>
+    <tr><td>Tim Ferriss · 5 Bullet Friday newsletter</td><td>Casual specific-observation voice</td></tr>
+    <tr><td>Patagonia founder content (Yvon Chouinard)</td><td>Quiet long-arc brand storytelling</td></tr>
+    <tr><td>Substack founders (Sam Parr, Casey Newton)</td><td>Discovery-voice solo content scaling</td></tr>
+  </table>
+
+  <h3>Investment / Fundraising</h3>
+  <table>
+    <tr><th>Resource</th><th>Why</th></tr>
+    <tr><td>YC Startup School (free)</td><td>Fundraising basics</td></tr>
+    <tr><td>Sequoia Capital "Pitch Memo" template</td><td>Standard memo format</td></tr>
+    <tr><td>"Venture Deals" by Brad Feld</td><td>Term-sheet education</td></tr>
+    <tr><td>The Information / Crunchbase Korea coverage</td><td>Track Korean wellness/food deals</td></tr>
+  </table>
+
+  <h3>Korean ecommerce specifically</h3>
+  <table>
+    <tr><th>Resource</th><th>Why</th></tr>
+    <tr><td>핀치 (Pinch) 매거진 — DTC 기업 인터뷰</td><td>Korean DTC operator interviews</td></tr>
+    <tr><td>Folin (폴인) — 기업가 콘텐츠</td><td>Korean indie brand stories</td></tr>
+    <tr><td>네이버 D2 블로그 (스마트스토어 사례)</td><td>Naver-side insights</td></tr>
+    <tr><td>오아 (OA) 매거진</td><td>Korean wellness category news</td></tr>
+    <tr><td>Wadiz 펀딩 가이드 + 성공 사례</td><td>Crowdfunding mechanics</td></tr>
+  </table>
 </section>
 
 <footer>
-  AVO Operating System · v0.1 · 2026.05.14 · Living doc, iterated weekly<br>
-  Sections 00-03 LIVE · Sections 04-13 in build queue · Updates pushed to allvitalorganics.github.io/avo-os/
+  AVO Operating System · v0.3 · 2026.05.14 · All sections live · Living doc, iterated weekly<br>
+  Updates pushed to allvitalorganics.github.io/avo-os/ · Sister docs: avo-brand-narrative · avo-episodes · avo-intro-deck · avo-labels
 </footer>
 
 </div>
+<script>
+// Scroll-spy: highlight active section in sticky nav
+function updateActiveNav() {
+  const sections = document.querySelectorAll('section.module[id]');
+  const scrollY = window.scrollY + 120;
+  let activeId = sections[0]?.id;
+  sections.forEach(s => {
+    if (s.offsetTop <= scrollY) activeId = s.id;
+  });
+  document.querySelectorAll('.nav-pill').forEach(p => {
+    p.classList.toggle('active', p.dataset.target === activeId);
+  });
+  const btn = document.getElementById('to-top');
+  if (btn) btn.classList.toggle('visible', window.scrollY > 600);
+}
+window.addEventListener('scroll', updateActiveNav);
+document.addEventListener('DOMContentLoaded', updateActiveNav);
+
+// Smooth scroll for nav pills with offset for sticky nav
+document.querySelectorAll('.nav-pill, nav.toc a').forEach(link => {
+  link.addEventListener('click', e => {
+    const href = link.getAttribute('href');
+    if (!href || !href.startsWith('#')) return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (!target) return;
+    const offset = 80;
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({top, behavior:'smooth'});
+  });
+});
+</script>
 </body>
 </html>
