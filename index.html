@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>AVO Operating System · v0.3 · Launch 2026.05.16</title>
+<title>AVO Operating System · v0.4 · Launch 2026.05.16</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Noto+Serif+KR:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -367,9 +367,9 @@ footer {
 <!-- ============== HEADER ============== -->
 <header>
   <div class="header-left">
-    <div class="brandmark">AVO Operating System · v0.3 · all sections live</div>
+    <div class="brandmark">AVO Operating System · v0.4 · all sections live · DTC frameworks enriched</div>
     <h1>The OS — <span class="kr">AVO 운영 시스템</span></h1>
-    <p class="subhead">Living operating doc for Alex + Justin (ops) + Dawon (design). Sticky nav at top — jump to any section. All 14 sections (00-13) now have full content. Updated iteratively as we learn.</p>
+    <p class="subhead">Living operating doc for Alex + Justin (ops) + Dawon (design). Sticky nav at top — jump to any section. v0.4 adds: decision matrix · crisis register · witness/teacher voice · 3-phase paid · contribution margin layers · retention math · cohort analysis · modes-not-phases · KPI cadences · vendor tier · founder bi-weekly 1:1s.</p>
   </div>
   <div class="tminus-hero">
     <div class="tminus-label">T-MINUS</div>
@@ -534,6 +534,31 @@ footer {
     <tr><td>KakaoTalk Channel (customer service)</td><td>Customer DMs, refunds, questions</td><td>≤2h business hours</td></tr>
     <tr><td>Phone</td><td>Emergencies only · 02-3445-3030 customer line</td><td>Real-time</td></tr>
   </table>
+
+  <h3>Decision authority matrix — who decides what alone</h3>
+  <p class="lead">Tier escalation prevents both decision paralysis and unauthorized commitments. Default to escalating <em>higher</em> when uncertain — the cost of over-consulting is low; the cost of discovering a decision wasn't made is high.</p>
+
+  <table>
+    <tr><th>Tier</th><th>Who decides</th><th>What kind of call</th></tr>
+    <tr><td><strong>Tier 1 — Solo</strong></td><td>Function owner decides alone · logged afterward in standup</td><td>Day-to-day operational calls within their function (e.g., Justin adjusts an ad budget · Alex replies to a press inquiry · Dawon picks a font weight)</td></tr>
+    <tr><td><strong>Tier 2 — Two-founder</strong></td><td>Function owner + one peer approval</td><td>Cross-functional calls or commitments to outside parties (e.g., signing a 공구 organizer · accepting a press interview · approving an ad creative shift)</td></tr>
+    <tr><td><strong>Tier 3 — All-hands</strong></td><td>Discussed in weekly review · documented</td><td>Strategic shifts (e.g., adding a new channel · changing a pricing tier · pausing a campaign mid-flight)</td></tr>
+    <tr><td><strong>Tier 4 — CEO</strong></td><td>Alex decides with team input</td><td>Strategic / capital decisions (e.g., raising · launching SKU 2 · signing exclusive supplier · entity formation)</td></tr>
+  </table>
+
+  <h3>Spending authority — by amount</h3>
+  <table>
+    <tr><th>Amount</th><th>Approval needed</th></tr>
+    <tr><td>Under ₩500K (~$370)</td><td>Function owner alone · logged in standup</td></tr>
+    <tr><td>₩500K – ₩5M (~$370 – $3,700)</td><td>Function owner + Justin (cash gatekeeper)</td></tr>
+    <tr><td>₩5M – ₩25M (~$3,700 – $18,500)</td><td>All-hands discussion in weekly review</td></tr>
+    <tr><td>Over ₩25M (~$18,500)</td><td>Alex (CEO) decides with team input</td></tr>
+  </table>
+
+  <div class="callout"><strong>The rule:</strong> if you're uncertain which tier a decision falls in, escalate up. Faster decisions made wrong cost more than slightly slower decisions made right.</div>
+
+  <h3>Founder accountability — bi-weekly 1:1s</h3>
+  <p class="lead">Alex + Justin 1:1, every two weeks, 30 min, no agenda required. <strong>Not optional.</strong> Founder departures are statistically common in CPG ventures — the 1:1 is the primary prevention mechanism. Surface tension before it compounds. The cadence prevents the need for the Co-Founder exit mechanics.</p>
 </section>
 
 <!-- ============== 02 · T-MINUS 48H CHECKLIST (CRITICAL PATH) ============== -->
@@ -841,6 +866,23 @@ footer {
     <li style="padding:6px 0 6px 16px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Quarterly batch analysis · 3rd-party 분석 시험성적서 · nutrition vs label match</li>
     <li style="padding:6px 0 6px 16px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Escalation: if 3+ complaints same issue same week → pause shipping that batch, investigate with Daoom</li>
   </ul>
+
+  <h3>Crisis risk register — first 24 hours pre-written</h3>
+  <p class="lead">The value of this isn't predicting crises — it's removing the need to think clearly when judgment is hardest. Pre-decide who acts, who's alerted, what gets paused, what gets said. When it actually happens, follow the script.</p>
+
+  <table>
+    <tr><th>Risk</th><th>Severity</th><th>Hour 0–2 actions</th><th>Hour 2–24 actions</th></tr>
+    <tr><td><strong>제조 중단 (Daoom)</strong> · production disruption</td><td>존재적 / Existential</td><td>Alex calls 김형서 대표 directly · all founders alerted · quantify orders affected · pause Naver/Coupang stock count if needed</td><td>Backup OEM contact (Daoom can refer) · communicate with subscribers if ship dates at risk · refund commitments held</td></tr>
+    <tr><td><strong>알레르기/이물질 사고</strong> · adverse health event</td><td>존재적 / Existential</td><td>Customer report flagged to Alex within 1 hr · empathetic response (no denial, no admission) · pull lot info from Daoom · preserve product</td><td>식약처 보고 if pattern emerges · 식품안전상담센터 1399 · 변호사 consult · QA records pulled</td></tr>
+    <tr><td><strong>바이럴 부정 콘텐츠</strong> · viral negative IG/Naver post</td><td>중대 / Material</td><td>Read the actual content + all comments first · do NOT respond reflexively</td><td>Alex + Justin decide: respond / ignore / engage privately · response if drafted goes through 1 sleep cycle before posting</td></tr>
+    <tr><td><strong>다움 출고 실패</strong> · 3PL/fulfillment failure</td><td>중대 / Material</td><td>Confirm issue with Daoom warehouse contact · quantify affected orders · pull list</td><td>Proactive customer outreach (KakaoTalk + Naver/Coupang DMs) · refund or expedite as appropriate · backup logistics if structural</td></tr>
+    <tr><td><strong>현금 부족 (&lt;3개월)</strong> · cash crunch</td><td>존재적 / Existential</td><td>Close current month forecast with actuals · halt all non-CRIT spending</td><td>Apply spend reduction trigger framework (see Section 09) · pause categories in order: tools → paid ads → content → ops · cash gate decision (raise / loan / 가족 bridge)</td></tr>
+    <tr><td><strong>규제 문의 (식약처)</strong> · regulatory inquiry</td><td>중대 / Material</td><td>Forward to 세무사 + 변호사 if available · NO direct response · log timeline</td><td>Counsel reviews · 시험성적서 + 인증서 pulled · public statement (if needed) drafted only after legal review</td></tr>
+    <tr><td><strong>창업자 이탈 신호</strong> · founder departure signal</td><td>존재적 / Existential</td><td>1:1 conversation with founder in question (NOT group meeting) · listen first · don't pre-decide</td><td>Co-Founder agreement governs vesting / shares · 24h sleep before any irreversible commitments · family alignment (parents) if needed</td></tr>
+    <tr><td><strong>핵심 벤더 실패</strong> · key vendor failure (Naver/Coupang/은행/세무사)</td><td>중대 / Material</td><td>Confirm issue · alternate payment if banking · alternate channel temporarily if marketplace · screenshot everything</td><td>Backup vendor evaluated · 7-day window to decide replacement · documentation of switching cost</td></tr>
+  </table>
+
+  <div class="callout warn"><strong>The rule:</strong> when something flagged here happens, don't innovate response. Follow the script. Refinement comes after, in the monthly retro. Crisis is not the time to be creative.</div>
 </section>
 
 <section class="module" id="m05">
@@ -1036,6 +1078,66 @@ footer {
     <tr><td>Fri</td><td>Naver Cafe engagement (5-10 community replies) · Press email batch if a hook exists</td><td>Justin / Alex</td></tr>
     <tr><td>Sat-Sun</td><td>Story-only · UGC repost · Behind-the-scenes</td><td>Alex</td></tr>
   </table>
+
+  <h3>Voice discipline applied to content — Witness, not Teacher</h3>
+  <p class="lead">Every Reel + Carousel + ad creative goes through this filter. The distinction is operational, not stylistic: <em>witness</em> shares what happened to them; <em>teacher</em> prescribes what should happen to you. Consumer brands that blur the line face trust erosion and regulatory exposure.</p>
+
+  <table>
+    <tr><th>Prohibited (Teacher voice)</th><th>Approved (Witness voice)</th></tr>
+    <tr><td>"여러분도 이렇게 해보세요" / "You should..."</td><td>"제 경우엔 이렇게 해봤어요" / "In my case I did X"</td></tr>
+    <tr><td>"다들 알아야 할 사실" / "Everyone needs to know"</td><td>"제가 알게 된 것" / "Here's what I found"</td></tr>
+    <tr><td>"진실은…" / "The truth is..."</td><td>"제가 본 건…" / "What I saw was…"</td></tr>
+    <tr><td>"이게 비밀이에요" / "This is the secret"</td><td>"이게 제가 시도한 거예요" / "This is what I tried"</td></tr>
+    <tr><td>"건강하려면…" / "To be healthy..."</td><td>"저는 이걸 마셔보고 어떤지 봤어요" / "I drank this and noticed..."</td></tr>
+  </table>
+
+  <h3>Specificity as trust signal</h3>
+  <p class="lead">Precision in personal narrative reads as credibility. Generality reads as marketing. <strong>"오늘 아침 5시 반에 일어나서 18종 채소를 마셨다"</strong> lands harder than <strong>"매일 아침 건강 식사를 한다."</strong></p>
+
+  <table>
+    <tr><th>Vague</th><th>Specific (the upgrade)</th></tr>
+    <tr><td>"한국 브랜드들 다 같아 보였다"</td><td>"마켓컬리 식물성 단백질 코너에서 7개 브랜드를 뒤집어봤고 5개는 proprietary blend라고 적혀 있었다"</td></tr>
+    <tr><td>"광고가 너무 많다"</td><td>"인스타그램에서 하루에 12개의 '슈퍼푸드' 광고를 봤다. 모두 비슷한 카피였다"</td></tr>
+    <tr><td>"건강에 좋은 음식"</td><td>"식이섬유 9g, 단백질 20g, 첨가물 0"</td></tr>
+    <tr><td>"오랫동안 만든 제품"</td><td>"1988년에 할아버지가 만든 진공동결건조 기계가 아직 돌아간다"</td></tr>
+  </table>
+
+  <h3>Cadence rule — Skip vs Post Weak</h3>
+  <div class="callout"><strong>"Never miss a posted day" AND "Skip if it isn't ready"</strong> are NOT contradictory. Missing a scheduled day breaks audience trust. Posting a weak episode breaks quality. <strong>Solution: post late rather than weak.</strong> Move the day, don't deliver subpar content to keep the slot.</div>
+
+  <p style="font-size:13px; color:var(--mid); max-width:760px;">If an episode isn't ready by Mon 5pm KST: skip Monday, post Wednesday instead. Tell the audience nothing — they'd rather get a great Wednesday post than a weak Monday post.</p>
+
+  <h3>Tease forward pattern — every episode plants the next</h3>
+  <p>The closing 5-10 seconds of every Reel + final caption line teases the next episode. This creates narrative dependency — audience returns not because the post was great, but because they need to know what happens next. Examples:</p>
+  <ul style="list-style:none; max-width:760px;">
+    <li style="padding:6px 0 6px 16px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> "다음 주 — 평창 공장 안에 들어가서 할아버지가 만든 기계를 본다"</li>
+    <li style="padding:6px 0 6px 16px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> "다음 — 공급사한테서 받은 답을 보고 무슨 결정을 했는지"</li>
+    <li style="padding:6px 0 6px 16px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> "곧 — 콜로스트럼 자료를 다 본 후의 결론"</li>
+  </ul>
+
+  <h3>Comment moderation — three categories</h3>
+  <p class="lead">All comments aren't created equal. On posts touching personal-recovery topics (atopic dermatitis, 1000일, etc.) or supplement/health concepts, sort responses by category:</p>
+
+  <table>
+    <tr><th>Category</th><th>Response protocol</th><th>SLA</th></tr>
+    <tr><td><strong>1. Sharing their own story</strong></td><td>Reply with brief acknowledgment. Don't pull them into a long thread — invite to DM if they want to talk more.</td><td>≤24h</td></tr>
+    <tr><td><strong>2. Asking medical/dietary advice</strong></td><td>Redirect to professional with empathy: "이건 개인 영양 상담사나 의사와 상담하시는 게 좋을 것 같아요. 저희는 식품이지 의료가 아니라서요."</td><td>≤24h</td></tr>
+    <tr><td><strong>3. Glorifying restriction / extreme diet</strong></td><td>Ignore or quietly hide. Don't engage — engagement amplifies. Don't argue.</td><td>Immediate hide</td></tr>
+  </table>
+
+  <p style="font-size:13px; color:var(--mid);">※ Active crisis detection: if a comment indicates someone in serious distress, DM privately with 정신건강위기상담전화 1577-0199 or 한국생명의전화 1588-9191. Then step back. AVO is not a counseling service.</p>
+
+  <h3>3-phase paid approach — Research → Validate → Scale</h3>
+  <p class="lead">The $10K budget doesn't go live at full spend Day 1. It moves through three modes. Each mode has different success criteria.</p>
+
+  <table>
+    <tr><th>Phase</th><th>Timing</th><th>Daily spend</th><th>Goal</th><th>Exit signal</th></tr>
+    <tr><td><strong>Phase 1 · Research</strong></td><td>Week 1-2 (~14 days)</td><td>₩30-50K/day total all channels</td><td>Learn what creative and what audience converts · expect unprofitability</td><td>2-3 creative concepts identified with click-through &gt;1%</td></tr>
+    <tr><td><strong>Phase 2 · Validate</strong></td><td>Week 3-6 (~30 days)</td><td>₩50-80K/day on the winners only</td><td>Prove CAC and conversion math on small scale · pause anything that doesn't convert</td><td>CAC under ₩15K · conversion ≥1.5% on Naver and ≥1.0% on Coupang</td></tr>
+    <tr><td><strong>Phase 3 · Scale</strong></td><td>Week 7+ (Month 2+)</td><td>₩100K-150K/day if validation passed</td><td>Press accelerator on winners with frequency + creative refresh discipline</td><td>Always: monitor for Meta algorithm trying to push us above CAC budget · creative refresh every 14 days</td></tr>
+  </table>
+
+  <div class="callout warn"><strong>Critical rule:</strong> Do not turn on paid acquisition until unit economics are proven AND post-purchase email lifecycle is live. The email sequence after a customer's first purchase is the highest-engagement moment in the customer lifecycle — most brands waste it as a receipt. Build the lifecycle BEFORE pumping in paid traffic.</div>
 
   <h3>KPIs — what we measure weekly</h3>
   <table>
@@ -1245,6 +1347,53 @@ footer {
     <li style="padding:6px 0 6px 18px; position:relative; font-size:13px;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Influencer seeding: prioritize creators who already use first-person discovery format (less polish = better fit)</li>
     <li style="padding:6px 0 6px 18px; position:relative; font-size:13px;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Avoid "AVO is the best ___" framings · keep "Here's what we found" framings</li>
   </ul>
+
+  <h3>Founder voice — three-mode evolution</h3>
+  <p class="lead">The brand never finishes evolving — this maps direction, not destination. Alex's voice is the engine NOW, but the brand graduates from founder-led → distributed voices → brand-as-character. The graduation is planned <em>in</em>, not bolted on later.</p>
+
+  <table>
+    <tr><th>Mode</th><th>When</th><th>Voice composition</th><th>Graduation trigger to next mode</th></tr>
+    <tr><td><strong>Mode 1 · Founder-led</strong></td><td>Now (Day 1) → Month 6+</td><td>Alex is the sole on-camera voice · Justin supporting · Episodes 01-30</td><td>~10K customers OR ~30K IG followers OR ₩500M+ annual revenue</td></tr>
+    <tr><td><strong>Mode 2 · Distributed voices</strong></td><td>Growth stage</td><td>Alex still anchors but customer voices · 박정은 작가 (mom) appearances · grandfather appearances · select expert collabs all begin to surface</td><td>~50K customers OR ~100K IG followers OR first retail partnership</td></tr>
+    <tr><td><strong>Mode 3 · Brand-as-character</strong></td><td>Scale stage (Year 3+)</td><td>AVO itself becomes the character · founders can appear or not appear · brand operates without founder dependency</td><td>—</td></tr>
+  </table>
+
+  <h3>The Pull-the-Cord clause — founder is not contractually bound to the brand's face</h3>
+  <p class="lead">If Alex wants out of the public-facing role earlier than the natural graduation, the system allows it. This protects both founder wellness and brand longevity.</p>
+
+  <ul style="list-style:none; max-width:760px;">
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Alex retains the right to step back from on-camera role at any quarterly checkpoint with 60-day handoff</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Successor voice options: Justin (limited, supporting today) · 박정은 작가 (author voice) · ensemble customer/expert voices</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Brand voice survives without Alex on camera — that's the design goal</li>
+  </ul>
+
+  <h3>Anti-brand list — what AVO will NOT do</h3>
+  <p class="lead">As important as what we DO. Documented so we can reference when tempted (and we will be).</p>
+
+  <table>
+    <tr><th>Anti-brand item</th><th>Why</th></tr>
+    <tr><td>"NCAA banned" / "WADA banned" / clinical claim copy on labels or marketing</td><td>Unverified hype · regulatory exposure · violates 일반식품 lane</td></tr>
+    <tr><td>"You should" / teacher-voice content</td><td>Breaks witness frame · alienates audience</td></tr>
+    <tr><td>"AVO is the best" / "#1" / superlatives</td><td>Unverifiable · 식품광고법 violation</td></tr>
+    <tr><td>Disease prevention / cure claims (정화 · 해독 · 면역 강화 · 치유)</td><td>건강기능식품 territory · we're 일반식품</td></tr>
+    <tr><td>Religious framing in body copy ("God-made food")</td><td>Alienates 50%+ of Korean consumers · stays only in grandfather's quoted voice</td></tr>
+    <tr><td>Cold-prospecting paid ads at our budget scale</td><td>Can't compete with 100×-budget brands · waste of $10K</td></tr>
+    <tr><td>Polished founder-glamour shots / lifestyle aspiration imagery</td><td>Breaks discovery-voice ethic · reads as marketing</td></tr>
+    <tr><td>Aggressive discounting below 40% net margin (except 공구)</td><td>Destroys premium story · trains customers to wait</td></tr>
+    <tr><td>"Limited time" / scarcity tactics on Salad Soymilk</td><td>Manufactured urgency · breaks trust</td></tr>
+    <tr><td>Influencer fees for early-stage partnerships</td><td>Gift-seed only · fee-based partnerships start Year 2</td></tr>
+    <tr><td>Naming 대학두유 on consumer-facing marketing</td><td>Marketing rule (제조 파트너 only · NOT label rule which legally must name)</td></tr>
+    <tr><td>Premature SKU expansion before SKU 1 validates</td><td>Splits attention · dilutes brand</td></tr>
+  </table>
+
+  <h3>Quarterly brand health check</h3>
+  <p>Last Friday of each quarter, 1 hour:</p>
+  <ul style="list-style:none; max-width:760px;">
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Read 20 customer service replies (CS sample) — is voice consistent?</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Read 20 IG/Naver reviews — what are people calling us?</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Read most recent 5 ad creatives — has marketing drifted from brand?</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Update anti-brand list with anything new we noticed we don't want to become</li>
+  </ul>
 </section>
 
 <section class="module" id="m09">
@@ -1372,6 +1521,80 @@ footer {
   </table>
 
   <p style="font-size:13px; color:var(--muted);">※ If only 1 gate clears: defer SKU 2 · re-order Salad Soymilk in larger batch. If 2 gates clear: prep SKU 2 R&D + supplier emails but don't launch yet. If all 3 clear: launch SKU 2 via Wadiz (preserves cash) — not via Naver/Coupang from start.</p>
+
+  <h3>Three financial layers — Revenue (vanity), Contribution margin (reality), Cash (truth)</h3>
+  <p class="lead">Most operators look at revenue. Revenue is a vanity metric — it doesn't say if you're making money. The three layers below get tracked separately. Every weekly review reads all three:</p>
+
+  <table>
+    <tr><th>Layer</th><th>What it tells you</th><th>How to compute</th></tr>
+    <tr><td><strong>1. Revenue (vanity)</strong></td><td>Top-of-funnel — how much money moved. Doesn't account for COGS, fees, refunds, ads.</td><td>Sum of gross sales across all channels</td></tr>
+    <tr><td><strong>2. Contribution margin (reality)</strong></td><td>What's actually left to fuel growth. The "do we have a business?" number.</td><td>Revenue – COGS – shipping – payment processing – CAC for that order</td></tr>
+    <tr><td><strong>3. Cash (truth)</strong></td><td>What's actually in the bank. Survives even when contribution looks good but cash flow is broken (settlement delays, refund spikes).</td><td>Mercury / 재니스바스켓 통장 balance · checked daily</td></tr>
+  </table>
+
+  <div class="callout"><strong>Rule:</strong> Revenue can be growing while contribution margin is collapsing (e.g., scaling paid ads at unprofitable CAC). Cash can be collapsing while revenue + contribution look fine (e.g., Coupang D+45 settlement delays compound). Track all three. Make decisions on contribution + cash. Never on revenue alone.</div>
+
+  <h3>Retention math — the core DTC metric</h3>
+  <p class="lead">Subscription/repeat brands live and die on <strong>Month-1 → Month-2 retention</strong>. This is the most important number after launch — more important than CAC, more important than AOV.</p>
+
+  <table>
+    <tr><th>Calculation</th><th>Target threshold</th><th>What it means</th></tr>
+    <tr><td>Of customers who first purchased in Month 1, % who placed a second order in Month 2</td><td><strong>≥70% = viable business</strong></td><td>11-month implied LTV at this retention level</td></tr>
+    <tr><td>Same calc for Month 2 → Month 3</td><td>≥85% (compounds)</td><td>Loyalty deepens or plateaus</td></tr>
+    <tr><td>Same calc for Month 6 → Month 7</td><td>≥90%</td><td>True product fans · long-term LTV unlocked</td></tr>
+  </table>
+
+  <p style="font-size:13px; color:var(--mid);">※ Below 50% Month-1→Month-2 retention = chasing new customers just to stay flat. Below 30% = the product isn't converting trial to habit. Diagnose: flavor? portion? price? channel mismatch?</p>
+
+  <h3>The retention lever — post-purchase email lifecycle</h3>
+  <p>The highest-engagement moment in the customer lifecycle is the email RIGHT AFTER purchase. Most brands waste it as a receipt. Don't. Build a 5-email post-purchase sequence:</p>
+
+  <table>
+    <tr><th>Email</th><th>Timing</th><th>Content</th></tr>
+    <tr><td>1. Order confirmation</td><td>Immediate</td><td>Receipt + "감사합니다" + brief note in Alex's voice · acknowledge the decision they just made</td></tr>
+    <tr><td>2. Shipping confirmation</td><td>Day 1-2</td><td>Tracking · how to drink it best · what to expect first taste</td></tr>
+    <tr><td>3. First-week check-in</td><td>Day 5-7</td><td>"7일째 — 어떻게 느끼셨어요?" · light · invites reply</td></tr>
+    <tr><td>4. Two-week story</td><td>Day 14</td><td>1000일 / 38년 ideology context · grandfather link · brand story they didn't get at purchase</td></tr>
+    <tr><td>5. Re-order nudge</td><td>Day 21-28</td><td>"이제 곧 다 드실 시점이라 알려드려요" · soft re-order CTA · 정기구독 option mentioned</td></tr>
+  </table>
+
+  <h3>Three-scenario model — Base / Downside / Upside</h3>
+  <p class="lead">Run the math under three assumptions. If the spread between Upside and Downside is &gt;5×, your business thesis is fragile and needs validation before scale spend.</p>
+
+  <table>
+    <tr><th>Variable</th><th>Downside</th><th>Base</th><th>Upside</th></tr>
+    <tr><td>Gross margin %</td><td>50%</td><td>65%</td><td>75%</td></tr>
+    <tr><td>Month-1→Month-2 retention</td><td>40%</td><td>60%</td><td>75%</td></tr>
+    <tr><td>CAC (blended)</td><td>₩20,000</td><td>₩12,000</td><td>₩6,000</td></tr>
+    <tr><td>Conversion rate (visitor → buyer)</td><td>0.8%</td><td>1.5%</td><td>3.0%</td></tr>
+    <tr><td>Implied LTV per customer</td><td>~₩40K</td><td>~₩90K</td><td>~₩180K</td></tr>
+    <tr><td><strong>LTV / CAC ratio</strong></td><td><strong>2.0× (fragile)</strong></td><td><strong>7.5× (healthy)</strong></td><td><strong>30× (scale aggressively)</strong></td></tr>
+    <tr><td>Recommendation if this is reality</td><td>Don't scale paid. Fix retention or AOV first.</td><td>Scale measuredly · validate cohorts before doubling</td><td>Scale paid · raise capital · expand SKUs</td></tr>
+  </table>
+
+  <div class="callout warn"><strong>The discipline:</strong> Until Month 3, assume Downside until data proves otherwise. Treat Base as ambition, Upside as the exception. Korean food DTC at this budget scale lives in Downside-to-Base territory for ~6 months before knowing which one is real.</div>
+
+  <h3>Cohort analysis — track customers by acquisition date/channel</h3>
+  <p class="lead">Aggregate metrics hide truth. Cohort analysis surfaces whether different channels produce different <em>quality</em> customers, not just different volumes.</p>
+
+  <table>
+    <tr><th>Cohort label</th><th>What we track per cohort</th></tr>
+    <tr><td>May 16-22 · Organic launch</td><td>Retention curve · LTV · repeat AOV · channel mix · CAC=0 baseline</td></tr>
+    <tr><td>May 23-29 · Influencer seed wave 1</td><td>Same metrics</td></tr>
+    <tr><td>Jun 1-7 · 공구 round 1</td><td>Same metrics</td></tr>
+    <tr><td>Jun 8-14 · Paid ads activation</td><td>Same metrics (this is where paid attribution gets isolated)</td></tr>
+    <tr><td>...</td><td>Continue weekly</td></tr>
+  </table>
+
+  <p style="font-size:13px; color:var(--mid);">After 3 months: cohort comparison surfaces patterns. If Cohort A (organic) has 70% retention vs Cohort D (paid) at 35% retention → paid acquisition is producing weaker customers → shift budget. Without cohorting, you'd think you're growing when you're actually churning.</p>
+
+  <h3>What NOT to track early (avoid premature precision)</h3>
+  <ul style="list-style:none; max-width:760px;">
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--warn);">·</span> <strong>LTV</strong> — needs 6+ months of data · meaningless before that</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--warn);">·</span> <strong>Channel ROAS</strong> — premature without 30+ days of sustained paid spend per channel</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--warn);">·</span> <strong>NPS</strong> — needs 100+ responses · wait until Month 4+</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--warn);">·</span> <strong>NRR (Net Revenue Retention)</strong> — wait until subscription base is &gt;100</li>
+  </ul>
 </section>
 
 <section class="module" id="m10">
@@ -1448,6 +1671,53 @@ footer {
     <tr><td>Lock supplier strategy for SKU 2</td><td>5 EU suppliers contacted · 2+ replied with COA · 1 selected for Phyto Complete launch · Importer-of-record decided</td></tr>
     <tr><td>Operating profitability month 1</td><td>Net revenue > marketing + opex · CAC < ₩12K · cash reserve growing</td></tr>
   </table>
+
+  <h3>Modes, not phases — operating discipline</h3>
+  <p class="lead">Build / Launch / Operate / Scale aren't sequential phases — they're <strong>overlapping continuous modes</strong>. AVO is in all four right now at varying intensities. When SKU 2 starts, we'll return to 50% Build mode while Salad Soymilk runs at full Scale mode. This prevents the common founder error of deferring operational infrastructure ("we don't need that yet") until it becomes a crisis.</p>
+
+  <table>
+    <tr><th>Mode</th><th>What it means</th><th>AVO right now (May 2026)</th></tr>
+    <tr><td><strong>Build</strong></td><td>R&D · supplier sourcing · regulatory · new SKU formulation</td><td>~30% intensity — Phyto Complete prototypes · EU supplier emails · Salad Soymilk v2 planning</td></tr>
+    <tr><td><strong>Launch</strong></td><td>Channel listings · ad campaigns · PR · first-customer activation</td><td>~40% intensity — Saturday Naver + Coupang go-live · Episode 01 posting · gift seeding wave 1</td></tr>
+    <tr><td><strong>Operate</strong></td><td>Daily fulfillment · CS · order monitoring · ad management · CS · QC</td><td>~20% intensity — building muscle for steady state Week 2+</td></tr>
+    <tr><td><strong>Scale</strong></td><td>Cohort analysis · channel expansion · process refinement · hiring</td><td>~10% intensity — too early; revisit Month 3+</td></tr>
+  </table>
+
+  <p style="font-size:13px; color:var(--mid);">※ The percentages re-balance over time. Month 2-3: Operate climbs to 50%. Month 6+: Scale climbs to 30% as channel expansion + 3PL evaluation start. Always tracking which mode is starving so we don't drop balls.</p>
+
+  <h3>KPI dashboards — three review cadences</h3>
+  <p class="lead">Track less, but better. 15 metrics reviewed religiously beats 50 metrics checked casually.</p>
+
+  <table>
+    <tr><th>Cadence</th><th>What to review</th><th>Owner · Time</th></tr>
+    <tr><td><strong>Daily glance (5 min, async)</strong></td><td>Orders yesterday · revenue yesterday · CS tickets open · 재니스바스켓 통장 cash balance · ad spend yesterday</td><td>Justin · checked 9am standup</td></tr>
+    <tr><td><strong>Weekly Friday wrap (45 min)</strong></td><td>Weekly revenue + units · AOV · new customers by source · CAC by channel · conversion rate visit→cart→purchase · email open/click % · creator gifting response rate · inventory days remaining · cash burn vs forecast</td><td>Justin pulls · Alex reviews · 90 min in weekly review meeting</td></tr>
+    <tr><td><strong>Monthly close (2 hr first Monday)</strong></td><td>Contribution margin per order · M1→M2 retention rate · LTV/CAC ratio (after Month 4+) · gross margin % · cash runway in months · CSAT signals from reviews</td><td>Alex · paired with monthly retro</td></tr>
+    <tr><td><strong>Quarterly deep (half-day)</strong></td><td>90-day and 180-day retention curves · channel mix · subscription % of revenue · press coverage tally · brand health check (read 20 reviews + 20 CS replies + 5 ads)</td><td>All-hands · last week of Q</td></tr>
+  </table>
+
+  <h3>Hiring trigger — when (and only when) to add a person</h3>
+  <p class="lead">Don't add a role to offload your own work. Add a role when a function is <strong>load-bearing enough that the founder's part-time attention to it is creating bottlenecks for other founders</strong>.</p>
+
+  <table>
+    <tr><th>First likely hire</th><th>Trigger signal</th><th>Engagement type</th></tr>
+    <tr><td>Part-time bookkeeper</td><td>Monthly close taking &gt;1 day · 부가세 신고 slipping past deadlines</td><td>세무사 already engaged; bookkeeper is data entry layer</td></tr>
+    <tr><td>Customer service contractor</td><td>CS volume &gt;30 tickets/day · response SLA slipping past 4 hours</td><td>Part-time KR · KakaoTalk-fluent</td></tr>
+    <tr><td>Performance marketer (contract)</td><td>Paid ad spend &gt;₩200K/day · CAC drifting up without obvious creative fix</td><td>Per-project contract first, full-time only after 3 months</td></tr>
+    <tr><td>Designer (part-time)</td><td>Dawon at 100% on packaging + multiple SKU campaigns + ads</td><td>Pull from Dawon's freelancer network</td></tr>
+  </table>
+
+  <p style="font-size:13px; color:var(--mid);">※ Until Month 6+ revenue ≥₩30M/mo sustained: NO new payroll commitments. Hire contractors, not employees. Korean 4대보험 + 퇴직금 obligations make full-time hires expensive lock-ins.</p>
+
+  <h3>Living document discipline</h3>
+  <p class="lead">This OS is load-bearing truth. When assumptions prove wrong, update immediately. Disagreements get logged with their resolutions. Prevents silent drift and creates institutional memory for why decisions were made.</p>
+
+  <ul style="list-style:none; max-width:760px;">
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Each update gets a version bump (v0.3 → v0.4) and commit message explaining what changed</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Decisions made in weekly review → noted in Notion + reflected here within 24h</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Disagreements get logged: "Alex wanted X, Justin wanted Y, decided Z because…"</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> The doc isn't read once — it's referenced in every weekly review</li>
+  </ul>
 </section>
 
 <section class="module" id="m11">
@@ -1569,6 +1839,27 @@ footer {
 
   <h3>Total monthly tool spend estimate</h3>
   <p style="font-size:14px;">~₩80-120K/month all-in once everything's running. Most expensive: 자비스/캐시노트 회계 (~₩50K). Most free: KakaoTalk + Google Workspace tier + Notion free. Within the $10K marketing budget allocation (~$500 for tools / 6 months).</p>
+
+  <h3>Vendor tier protocol — three categories</h3>
+  <p class="lead">Not all vendors are equal. Tier them by criticality, then apply the protocol to each.</p>
+
+  <table>
+    <tr><th>Tier</th><th>Examples</th><th>Protocol</th></tr>
+    <tr><td><strong>Tier 1 · Mission-critical</strong></td><td>대학두유 (Daoom) manufacturing · Daoom warehouse fulfillment · 재니스바스켓 법인 통장 (KB은행) · 세무사</td><td>Alex maintains personal relationship with leadership · backup option identified for each · contract reviewed by counsel · quarterly business reviews · Crisis Risk Register pre-protocols apply</td></tr>
+    <tr><td><strong>Tier 2 · High-importance</strong></td><td>Naver Smartstore · Coupang · Meta · Google Ads · 자비스/캐시노트 · CJ대한통운 · Mercury (US AVO Ventures)</td><td>Justin owns account · monthly billing review · documented switching cost · 1 backup option known but not engaged</td></tr>
+    <tr><td><strong>Tier 3 · Standard</strong></td><td>Notion · Figma · Adobe Illustrator · Google Workspace</td><td>Owner per tool · quarterly review of value vs cost · easy to replace · cancel if not delivering</td></tr>
+  </table>
+
+  <h3>Quarterly vendor audit — last Friday of each Q</h3>
+  <p>30-min review of every tool in the stack:</p>
+  <ul style="list-style:none; max-width:760px;">
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Is this tool still delivering value at the cost?</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Has usage changed? Are we paying for capacity we don't use?</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Are we paying for two tools that do the same thing? (Vendor sprawl creates mental load.)</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13.5px; line-height:1.7;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Can we consolidate? (One tool doing two jobs &gt; two tools doing one.)</li>
+  </ul>
+
+  <div class="callout"><strong>The rule:</strong> move fast on consolidating tools. Don't tolerate inactive subscriptions. Don't pay for "in case we need it" capacity.</div>
 </section>
 
 <section class="module" id="m13">
@@ -1660,7 +1951,7 @@ footer {
 </section>
 
 <footer>
-  AVO Operating System · v0.3 · 2026.05.14 · All sections live · Living doc, iterated weekly<br>
+  AVO Operating System · v0.4 · 2026.05.14 · DTC frameworks enriched · Living doc, iterated weekly<br>
   Updates pushed to allvitalorganics.github.io/avo-os/ · Sister docs: avo-brand-narrative · avo-episodes · avo-intro-deck · avo-labels
 </footer>
 
