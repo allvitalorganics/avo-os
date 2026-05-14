@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>AVO Operating System · v0.1 · Launch 2026.05.16</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Noto+Serif+KR:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --bg:#FAFAF7; --paper:#FFFFFF; --ink:#161614; --mid:#55564F;
+  --muted:#8E9087; --rule:#E3E3DA; --soft:#F0F0EC;
+  --forest:#346539; --forest-deep:#1F4622; --sage:#B9D2BD; --sage-soft:#DCE7DD;
+  --warn:#7A5730; --warn-soft:#FFF8E6;
+  --red:#A03B2C; --red-soft:#FBEEEB;
+  --cream:#F2EDE2;
+  --serif-en:'Playfair Display', 'Times New Roman', serif;
+  --serif-kr:'Noto Serif KR', 'Nanum Myeongjo', serif;
+  --mono:'JetBrains Mono', monospace;
+  --sans:'Inter', 'Pretendard', -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+}
+html { scroll-behavior:smooth; }
+body {
+  font-family:var(--sans); background:var(--bg); color:var(--ink);
+  font-size:14.5px; line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+.wrap { max-width:1280px; margin:0 auto; padding:32px 28px 96px; }
+
+/* HEADER */
+header {
+  padding-bottom:24px; border-bottom:2px solid var(--ink); margin-bottom:40px;
+  display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;
+}
+.header-left { flex:1; min-width:380px; }
+.brandmark {
+  font-size:10px; letter-spacing:0.24em; color:var(--forest);
+  font-weight:700; text-transform:uppercase; margin-bottom:14px;
+}
+h1 {
+  font-family:var(--serif-en); font-size:clamp(32px, 4vw, 48px);
+  font-weight:400; line-height:1.05; letter-spacing:-0.02em;
+  margin-bottom:10px; color:var(--forest-deep);
+}
+h1 .kr { font-family:var(--serif-kr); font-weight:500; font-size:0.85em; }
+.subhead { font-size:14px; color:var(--mid); max-width:680px; line-height:1.7; }
+
+/* T-MINUS COUNTDOWN HERO */
+.tminus-hero {
+  background:linear-gradient(135deg, var(--forest-deep), var(--forest));
+  color:var(--cream); padding:28px 32px; border-radius:8px;
+  min-width:280px; text-align:left;
+}
+.tminus-label {
+  font-family:var(--mono); font-size:11px; letter-spacing:0.16em;
+  text-transform:uppercase; color:var(--sage); font-weight:600; margin-bottom:10px;
+}
+.tminus-date {
+  font-family:var(--serif-en); font-size:32px; font-weight:400;
+  letter-spacing:-0.02em; line-height:1; margin-bottom:6px;
+}
+.tminus-detail { font-size:13px; color:rgba(255,255,255,0.85); line-height:1.55; }
+
+/* NAV */
+nav.toc {
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+  gap:8px 16px; margin-bottom:48px;
+  padding:18px 22px; background:var(--paper); border:1px solid var(--rule);
+  border-radius:8px;
+}
+nav.toc a {
+  display:flex; gap:10px; font-size:12.5px; color:var(--ink);
+  text-decoration:none; padding:6px 0; border-bottom:1px dotted transparent;
+}
+nav.toc a:hover { border-bottom:1px dotted var(--forest); color:var(--forest); }
+nav.toc a .num {
+  font-family:var(--mono); font-size:11px; color:var(--muted);
+  font-weight:600; min-width:24px;
+}
+nav.toc a.live { color:var(--forest); font-weight:600; }
+nav.toc a.live .num { color:var(--forest); }
+nav.toc a.pending { color:var(--muted); }
+nav.toc a.pending::after { content:' · soon'; font-size:10px; color:var(--muted); font-style:italic; }
+
+/* SECTIONS */
+section.module {
+  margin-bottom:72px; padding-bottom:56px; border-bottom:2px solid var(--rule);
+}
+section.module:last-of-type { border-bottom:none; }
+.module-head {
+  display:flex; justify-content:space-between; align-items:baseline;
+  margin-bottom:24px; flex-wrap:wrap; gap:16px;
+}
+.module-head .num {
+  font-family:var(--mono); font-size:14px; letter-spacing:0.14em;
+  color:var(--forest); font-weight:700; margin-right:14px;
+}
+.module-head .titles { flex:1; min-width:300px; }
+.module-head h2 {
+  font-family:var(--serif-en); font-size:30px; font-weight:400;
+  line-height:1.1; letter-spacing:-0.015em; margin-bottom:4px;
+}
+.module-head h2 .kr {
+  font-family:var(--serif-kr); font-weight:500; font-size:22px;
+  display:block; color:var(--mid); margin-top:4px;
+}
+.module-head .meta {
+  font-size:11px; color:var(--muted); letter-spacing:0.08em;
+  text-transform:uppercase; font-weight:600; margin-top:10px;
+}
+.module-status {
+  display:inline-block; font-size:9px; letter-spacing:0.18em;
+  text-transform:uppercase; font-weight:700; padding:4px 10px;
+  border-radius:99px; vertical-align:middle;
+}
+.module-status.live { background:var(--forest); color:var(--paper); }
+.module-status.pending { background:var(--soft); color:var(--muted); border:1px solid var(--rule); }
+
+h3 {
+  font-family:var(--sans); font-size:12px; letter-spacing:0.18em;
+  color:var(--forest); font-weight:700; text-transform:uppercase;
+  margin:32px 0 14px;
+}
+h3:first-of-type { margin-top:0; }
+h4 {
+  font-family:var(--serif-en); font-size:20px; font-weight:400;
+  margin:24px 0 10px; color:var(--ink); letter-spacing:-0.01em;
+}
+p { margin-bottom:11px; }
+p.lead { font-size:15px; color:var(--mid); max-width:820px; line-height:1.75; }
+
+/* CHECKLIST */
+.checklist {
+  background:var(--paper); border:1px solid var(--rule); border-radius:8px;
+  padding:20px 24px; margin:14px 0 24px;
+}
+.checklist-title {
+  font-size:11px; letter-spacing:0.16em; color:var(--forest);
+  font-weight:700; text-transform:uppercase; margin-bottom:12px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.checklist-owner {
+  font-family:var(--mono); font-size:10px; letter-spacing:0.1em;
+  color:var(--muted); font-weight:500; text-transform:none;
+}
+.checklist ul { list-style:none; }
+.checklist li {
+  padding:8px 0 8px 30px; position:relative; border-bottom:1px solid var(--rule);
+  font-size:13px; line-height:1.6; color:var(--ink);
+}
+.checklist li:last-child { border-bottom:none; }
+.checklist li::before {
+  content:''; position:absolute; left:0; top:11px;
+  width:14px; height:14px; border:1.5px solid var(--rule); border-radius:3px;
+  background:var(--paper);
+}
+.checklist li.crit::before { border-color:var(--red); border-width:2px; }
+.checklist li.crit { font-weight:600; }
+.checklist li .owner {
+  display:inline-block; font-family:var(--mono); font-size:10px;
+  letter-spacing:0.06em; color:var(--forest); font-weight:700;
+  background:var(--sage-soft); padding:2px 6px; border-radius:3px; margin-left:8px;
+}
+.checklist li .note {
+  display:block; font-size:11.5px; color:var(--muted);
+  margin-top:3px; font-style:italic;
+}
+
+/* DAY BLOCKS */
+.day-block {
+  background:var(--paper); border:1px solid var(--rule); border-radius:8px;
+  padding:24px 28px; margin:14px 0; position:relative;
+}
+.day-block.today { border-left:4px solid var(--red); background:var(--red-soft); }
+.day-block.tomorrow { border-left:4px solid var(--warn); background:var(--warn-soft); }
+.day-block.launch { border-left:4px solid var(--forest); background:var(--sage-soft); }
+.day-block .day-tag {
+  font-family:var(--mono); font-size:11px; letter-spacing:0.16em;
+  text-transform:uppercase; color:var(--mid); font-weight:700; margin-bottom:4px;
+}
+.day-block .day-title {
+  font-family:var(--serif-en); font-size:22px; font-weight:400;
+  letter-spacing:-0.01em; margin-bottom:14px;
+}
+.day-block.today .day-tag { color:var(--red); }
+.day-block.tomorrow .day-tag { color:var(--warn); }
+.day-block.launch .day-tag { color:var(--forest-deep); }
+
+/* TIMELINE schedule (Sat hour-by-hour) */
+.schedule {
+  display:grid; grid-template-columns:80px 1fr;
+  gap:8px 16px; margin:14px 0;
+}
+.sch-time {
+  font-family:var(--mono); font-size:12px; color:var(--forest);
+  font-weight:700; padding-top:4px;
+}
+.sch-action {
+  background:var(--paper); border:1px solid var(--rule); border-radius:4px;
+  padding:8px 14px; font-size:13px; line-height:1.55;
+}
+.sch-action .what { font-weight:600; }
+.sch-action .who {
+  display:inline-block; font-family:var(--mono); font-size:9px;
+  background:var(--sage-soft); color:var(--forest); padding:2px 6px;
+  border-radius:3px; margin-left:6px; letter-spacing:0.04em; font-weight:700;
+}
+
+/* TABLES */
+table {
+  width:100%; border-collapse:collapse; margin:8px 0 18px;
+  font-size:13px; background:var(--paper);
+  border:1px solid var(--rule); border-radius:4px;
+}
+table th, table td {
+  text-align:left; padding:10px 14px; border-bottom:1px solid var(--rule);
+}
+table th {
+  font-size:10px; letter-spacing:0.12em; color:var(--muted);
+  text-transform:uppercase; font-weight:600; background:var(--soft);
+}
+table td:first-child { font-weight:600; color:var(--ink); }
+table tr:last-child td { border-bottom:none; }
+
+/* ROLE BLOCKS */
+.roles {
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;
+  margin:16px 0;
+}
+@media (max-width:800px) { .roles { grid-template-columns:1fr; } }
+.role {
+  background:var(--paper); border:1px solid var(--rule); border-radius:6px;
+  padding:20px 22px;
+}
+.role.alex { border-top:3px solid var(--forest); }
+.role.justin { border-top:3px solid var(--warn); }
+.role.dawon { border-top:3px solid var(--red); }
+.role-name {
+  font-family:var(--serif-en); font-size:18px; margin-bottom:2px;
+}
+.role-title {
+  font-size:10px; letter-spacing:0.14em; color:var(--muted);
+  text-transform:uppercase; font-weight:600; margin-bottom:14px;
+}
+.role-list { list-style:none; }
+.role-list li {
+  padding:5px 0 5px 16px; position:relative; font-size:12.5px; line-height:1.6;
+}
+.role-list li::before {
+  content:'·'; position:absolute; left:5px; color:var(--forest); font-weight:700;
+}
+
+/* CALLOUT */
+.callout {
+  background:var(--sage-soft); border-left:3px solid var(--forest);
+  padding:16px 22px; margin:14px 0; border-radius:0 4px 4px 0;
+  font-size:13px;
+}
+.callout strong { color:var(--forest-deep); }
+.callout.warn { background:var(--warn-soft); border-color:var(--warn); }
+.callout.warn strong { color:var(--warn); }
+.callout.crit { background:var(--red-soft); border-color:var(--red); }
+.callout.crit strong { color:var(--red); }
+
+/* Section number badge */
+.bignum {
+  display:inline-flex; align-items:center; justify-content:center;
+  font-family:var(--serif-en); font-size:60px; line-height:1;
+  color:var(--sage); font-weight:400; font-style:italic;
+  margin-right:18px;
+}
+
+footer {
+  margin-top:64px; padding-top:28px; border-top:1px solid var(--rule);
+  font-size:11px; letter-spacing:0.14em; color:var(--muted);
+  text-transform:uppercase; text-align:center;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ============== HEADER ============== -->
+<header>
+  <div class="header-left">
+    <div class="brandmark">AVO Operating System · v0.1</div>
+    <h1>The OS — <span class="kr">AVO 운영 시스템</span></h1>
+    <p class="subhead">Live operating doc for Alex + Justin (operations) + Dawon (design). Built section-by-section. <strong>Section 02 (T-minus 48h critical path) is live below.</strong> Sections 04-13 follow within 3-5 days.</p>
+  </div>
+  <div class="tminus-hero">
+    <div class="tminus-label">T-MINUS</div>
+    <div class="tminus-date">48h to Launch</div>
+    <div class="tminus-detail">Saturday May 16, 2026 · 식약처 product registration → Live<br>Channels: Naver Smartstore · Coupang Marketplace</div>
+  </div>
+</header>
+
+<!-- ============== TOC ============== -->
+<nav class="toc">
+  <a href="#m00" class="live"><span class="num">00</span>Today's reality + T-minus</a>
+  <a href="#m01" class="live"><span class="num">01</span>Roles + cadence</a>
+  <a href="#m02" class="live"><span class="num">02</span>T-minus 48h checklist</a>
+  <a href="#m03" class="live"><span class="num">03</span>Launch week protocol</a>
+  <a href="#m04" class="pending"><span class="num">04</span>Operations function</a>
+  <a href="#m05" class="pending"><span class="num">05</span>Sales / Channels</a>
+  <a href="#m06" class="pending"><span class="num">06</span>Marketing function</a>
+  <a href="#m07" class="pending"><span class="num">07</span>Product function</a>
+  <a href="#m08" class="pending"><span class="num">08</span>Brand / BM</a>
+  <a href="#m09" class="pending"><span class="num">09</span>Finance function</a>
+  <a href="#m10" class="pending"><span class="num">10</span>Management cadence</a>
+  <a href="#m11" class="pending"><span class="num">11</span>Investment / Scaling</a>
+  <a href="#m12" class="pending"><span class="num">12</span>Tools / Stack</a>
+  <a href="#m13" class="pending"><span class="num">13</span>Per-function crash course</a>
+</nav>
+
+<!-- ============== 00 · TODAY'S REALITY ============== -->
+<section class="module" id="m00">
+  <div class="module-head">
+    <span class="bignum">00</span>
+    <div class="titles">
+      <h2>Today's reality + T-minus<span class="kr">현재 상황 + 카운트다운</span></h2>
+      <div class="meta">Truth check · 매일 아침 9am 갱신 · <span class="module-status live">live</span></div>
+    </div>
+  </div>
+
+  <h3>What's true today (Thu May 14, 2026)</h3>
+  <table>
+    <tr><th>Axis</th><th>Status</th><th>Owner</th></tr>
+    <tr><td>식약처 제품 등록</td><td>진행 중 · Sat May 16 완료 예정</td><td>(외부)</td></tr>
+    <tr><td>샐러두유 재고</td><td>2,666 박스 (40,000 파우치) · KY Logistics 현재 보관</td><td>Justin</td></tr>
+    <tr><td>입점 채널</td><td>Naver Smartstore · Coupang Marketplace (Day 1)</td><td>Justin</td></tr>
+    <tr><td>홈쇼핑</td><td>Phase 2 (Week 4+) · 김지원 대표 연결 대기</td><td>Alex</td></tr>
+    <tr><td>마케팅</td><td>Instagram · Meta · Google · Naver SA/DA · Cafe/Blog</td><td>Justin lead, Alex content</td></tr>
+    <tr><td>물류</td><td>KY → Daoom warehouse 이전 필요 · 출고 Daoom 진행</td><td>Justin</td></tr>
+    <tr><td>법인 / 사업자</td><td>재니스바스켓㈜ (interim) · 신규 AVO 법인 TBD</td><td>Alex + mom</td></tr>
+    <tr><td>고객상담실</td><td>02-3445-3030 (production-confirmed)</td><td>—</td></tr>
+    <tr><td>브랜드 IP</td><td>재니스바스켓 보유 · AVO 상표 진행</td><td>—</td></tr>
+    <tr><td>운영 인원</td><td>Alex (브랜드/카피/전략) · Justin (운영/광고/채널) · Dawon (디자인)</td><td>—</td></tr>
+  </table>
+
+  <div class="callout crit">
+    <strong>핵심 리스크 (Sat 전 해결 필요):</strong>
+    <ol style="margin-left:18px; margin-top:6px; font-size:12.5px;">
+      <li>KY → Daoom 재고 이전 일정 미정</li>
+      <li>Naver Smartstore 최종 listing 미완 (상세 페이지, 옵션, 검색최적화)</li>
+      <li>Coupang 최종 listing 미완</li>
+      <li>광고 캠페인 (Meta + Google + Naver) 미세팅</li>
+      <li>KakaoTalk Channel 고객응대 자동응답 미세팅</li>
+    </ol>
+  </div>
+
+  <h3>T-minus 카운트다운</h3>
+  <div class="day-block today">
+    <div class="day-tag">T-2 · 오늘 · 2026.05.14 Thu</div>
+    <div class="day-title">Setup day — 모든 인프라 준비 마감</div>
+    <p style="font-size:13px; color:var(--mid);">상세 체크리스트는 Section 02 참조. 오늘 안에 완료되어야 Sat 런치 가능.</p>
+  </div>
+  <div class="day-block tomorrow">
+    <div class="day-tag">T-1 · 내일 · 2026.05.15 Fri</div>
+    <div class="day-title">Dress rehearsal — 모든 테스트 + 재고 도착</div>
+    <p style="font-size:13px; color:var(--mid);">KY → Daoom 재고 이전 완료. 모든 listing draft 최종 검토. 광고 캠페인 draft 완성.</p>
+  </div>
+  <div class="day-block launch">
+    <div class="day-tag">T-0 · 2026.05.16 Sat · LAUNCH DAY</div>
+    <div class="day-title">Go live — 10am Naver · 10am Coupang · 12pm content</div>
+    <p style="font-size:13px; color:var(--mid);">상세 시간표는 Section 03 참조. 광고 라이브, 첫 주문 모니터링, 첫 배송 출고.</p>
+  </div>
+</section>
+
+<!-- ============== 01 · ROLES + CADENCE ============== -->
+<section class="module" id="m01">
+  <div class="module-head">
+    <span class="bignum">01</span>
+    <div class="titles">
+      <h2>Roles + operating cadence<span class="kr">역할 + 운영 리듬</span></h2>
+      <div class="meta">Who owns what · daily/weekly/monthly rhythm · <span class="module-status live">live</span></div>
+    </div>
+  </div>
+
+  <h3>3-person team — primary ownership</h3>
+  <div class="roles">
+    <div class="role alex">
+      <div class="role-name">Alex Kim</div>
+      <div class="role-title">CEO · Brand · Strategy</div>
+      <ul class="role-list">
+        <li>Brand voice + content direction</li>
+        <li>Instagram posts (writing + posting)</li>
+        <li>Customer-facing comms (DMs, KakaoTalk)</li>
+        <li>Press, partnerships, collabs outreach</li>
+        <li>UGC seeding + influencer outreach</li>
+        <li>Storytelling (1000일, Daoom heritage)</li>
+        <li>Strategic decisions (pricing, channel, raise)</li>
+        <li>Family + dad (Bobsnu/Daoom) liaison</li>
+        <li>Vendor negotiations (Naver/Coupang BMs)</li>
+        <li>Mom liaison for entity / cashflow</li>
+      </ul>
+    </div>
+    <div class="role justin">
+      <div class="role-name">Justin Kim</div>
+      <div class="role-title">COO · Ops · Performance</div>
+      <ul class="role-list">
+        <li>Naver Smartstore setup + listings + 검색최적화</li>
+        <li>Coupang setup + listings + BM relationship</li>
+        <li>Meta Ads (campaigns, audiences, creative testing)</li>
+        <li>Google Ads (search + shopping)</li>
+        <li>Naver SA + DA + cafe/blog ads</li>
+        <li>Inventory management (Daoom warehouse coordination)</li>
+        <li>Order fulfillment monitoring (Daoom 출고)</li>
+        <li>Refunds / exchanges / 반품 process</li>
+        <li>Daily financial check (settlement, P&L)</li>
+        <li>UGC group coordination (gift seeding ops)</li>
+        <li>Investor reachout when ready</li>
+      </ul>
+    </div>
+    <div class="role dawon">
+      <div class="role-name">Dawon Kim</div>
+      <div class="role-title">Designer · Creative</div>
+      <ul class="role-list">
+        <li>All packaging design (current + future SKUs)</li>
+        <li>PDP (상세페이지) design</li>
+        <li>Ad creative (static + carousel + reels)</li>
+        <li>Instagram visual direction</li>
+        <li>Brand system maintenance (typography, color, motifs)</li>
+        <li>Email + landing page design</li>
+        <li>Photography art direction</li>
+        <li>(NOT involved in ops, finance, channel mgmt)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Owner principle:</strong> One person owns each task end-to-end. Other people advise, but the owner decides + executes. No hand-offs in the middle of a task (causes delays). Hand-offs happen at clean milestones.
+  </div>
+
+  <h3>Operating cadence — 매일 / 매주 / 매월</h3>
+  <table>
+    <tr><th>Cadence</th><th>What</th><th>Time</th><th>Attendees</th></tr>
+    <tr><td>Daily Standup</td><td>15-min status check — yesterday / today / blockers</td><td>9:00am KST</td><td>Alex + Justin</td></tr>
+    <tr><td>Weekly Review</td><td>1-hour deep review — sales, ads, ops, customer feedback, next-week plan</td><td>Mon 10:00am KST</td><td>Alex + Justin (Dawon optional)</td></tr>
+    <tr><td>Monthly Retro</td><td>2-hour retro — what worked, what didn't, what to change. Plus financial close.</td><td>Last Fri of month</td><td>Alex + Justin + Dawon</td></tr>
+    <tr><td>Quarterly Planning</td><td>Half-day strategic planning — OKRs, SKU pipeline, channel expansion, investment</td><td>Last week of Q</td><td>Alex + Justin + Dawon</td></tr>
+    <tr><td>Family ops sync</td><td>Mom / dad alignment if entity or manufacturing decisions pending</td><td>Ad hoc, ≤1x/month</td><td>Alex + Justin + parents</td></tr>
+  </table>
+
+  <h3>Communication channels</h3>
+  <table>
+    <tr><th>Channel</th><th>Use for</th><th>Response SLA</th></tr>
+    <tr><td>Slack / Discord / KakaoTalk (3-person team chat)</td><td>Quick coordination, status, light decisions</td><td>Same day</td></tr>
+    <tr><td>Notion / Google Docs</td><td>Decisions, planning, longer-form thinking</td><td>—</td></tr>
+    <tr><td>Email</td><td>External (vendors, suppliers, investors, press)</td><td>24-48h</td></tr>
+    <tr><td>KakaoTalk Channel (customer service)</td><td>Customer DMs, refunds, questions</td><td>≤2h business hours</td></tr>
+    <tr><td>Phone</td><td>Emergencies only · 02-3445-3030 customer line</td><td>Real-time</td></tr>
+  </table>
+</section>
+
+<!-- ============== 02 · T-MINUS 48H CHECKLIST (CRITICAL PATH) ============== -->
+<section class="module" id="m02">
+  <div class="module-head">
+    <span class="bignum">02</span>
+    <div class="titles">
+      <h2>T-minus 48h critical path<span class="kr">48시간 런치 체크리스트</span></h2>
+      <div class="meta">All MUST-haves before Sat 10am launch · <span class="module-status live">live</span></div>
+    </div>
+  </div>
+
+  <p class="lead">Below is the exhaustive critical-path checklist for the next 48 hours. <strong>Items marked CRIT must be completed or launch is delayed.</strong> Items marked with owner badge are assigned. Cross off as you go (no shared state — track in a shared spreadsheet).</p>
+
+  <div class="callout warn">
+    <strong>Recommended tool:</strong> Mirror this list in a shared Google Sheet or Notion. Sync 매 아침 9am standup. Move "complete" rows to a "done" tab. Anything not done by 6pm Friday escalates to "decide if launch slips."
+  </div>
+
+  <!-- THURSDAY -->
+  <div class="day-block today">
+    <div class="day-tag">T-2 · Thu 2026.05.14 · TODAY</div>
+    <div class="day-title">Setup day — finish all infrastructure</div>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">INVENTORY + LOGISTICS<span class="checklist-owner">Owner: Justin</span></div>
+    <ul>
+      <li class="crit">KY Logistics: confirm exact pickup date + time + temperature controls <span class="owner">Justin</span><span class="note">Phone or email today. Pickup window: Friday morning.</span></li>
+      <li class="crit">Daoom warehouse: confirm receiving capacity + storage location + barcode/SKU labeling protocol <span class="owner">Justin</span><span class="note">Confirm 다움 has space for 2,666 boxes. Storage temp: ambient (샐러두유 멸균제품 상온 보관).</span></li>
+      <li class="crit">Pickup transport: book truck/freight from KY → Daoom (강원도 평창) <span class="owner">Justin</span><span class="note">Distance + transport quote. Pre-pay or COD.</span></li>
+      <li>Inventory count document: prepare reconciliation sheet (PO qty vs. shipped qty vs. received qty) <span class="owner">Justin</span></li>
+      <li>Lot/batch tracking: document expiration dates per pallet for FIFO <span class="owner">Justin</span></li>
+    </ul>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">NAVER SMARTSTORE<span class="checklist-owner">Owner: Justin (Alex copy review)</span></div>
+    <ul>
+      <li class="crit">Smartstore account 인증 + 사업자등록증 업로드 (재니스바스켓) <span class="owner">Justin</span></li>
+      <li class="crit">Product listing: 제품명, 옵션 (1박스, 2박스, 정기구독), 가격 (₩45,000 / 박스) <span class="owner">Justin</span></li>
+      <li class="crit">PDP (상세페이지) image upload: hero + 기승전결 narrative + ingredient + 영양정보 + 헤리티지 <span class="owner">Justin + Dawon</span><span class="note">Use existing Bobsnu-style 기승전결 template adapted to AVO voice.</span></li>
+      <li class="crit">SEO/검색최적화: title + tags + 검색어 (샐러두유, 와일드그린즈, 식이섬유 두유, 식물성 단백 음료) <span class="owner">Justin</span></li>
+      <li>Naver 도착보장 setup (D+1 배송 약속) <span class="owner">Justin</span><span class="note">Requires Daoom 출고 cutoff confirmed for noon.</span></li>
+      <li>옵션 가격 설정: 1박스 ₩45K, 2박스 ₩84K, 정기 1박스 ₩40.5K <span class="owner">Justin</span></li>
+      <li>Q&A 자동 응답 + 환불/교환 policy 설정 <span class="owner">Justin</span></li>
+      <li class="crit">Payment gateway 테스트 transaction (₩100 test, refund) <span class="owner">Justin</span></li>
+    </ul>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">COUPANG MARKETPLACE<span class="checklist-owner">Owner: Justin</span></div>
+    <ul>
+      <li class="crit">셀러 가입 (재니스바스켓 사업자) 완료 <span class="owner">Justin</span></li>
+      <li class="crit">카테고리 분류: 식품 → 음료 → 두유 카테고리 매핑 <span class="owner">Justin</span></li>
+      <li class="crit">Listing: 제품명, 옵션, 가격 (₩47,000 / 박스), 이미지 <span class="owner">Justin</span></li>
+      <li>Rocket Growth (FLC) eligibility check (선택 — 데이 1에 필요 X) <span class="owner">Justin</span><span class="note">Start with 3P Marketplace. Move to FLC after first 4 weeks of sales data.</span></li>
+      <li>Coupang Wing dashboard 권한 + 알림 설정 <span class="owner">Justin</span></li>
+      <li>Q&A + 환불/교환 policy <span class="owner">Justin</span></li>
+      <li class="crit">Payment gateway 테스트 <span class="owner">Justin</span></li>
+    </ul>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">MARKETING — AD CAMPAIGNS DRAFT<span class="checklist-owner">Owner: Justin · creative by Dawon · copy by Alex</span></div>
+    <ul>
+      <li class="crit">Meta Ads (Facebook + Instagram) — first campaign draft: <strong>brand awareness + conversion</strong> <span class="owner">Justin</span><span class="note">Budget: ₩50,000 / day starting. Audience: 30-45 여성, 서울/수도권, wellness interests. Creative: Salad Soymilk hero shot + 18 plants story.</span></li>
+      <li class="crit">Google Ads — brand keywords (AVO, 와일드 그린즈, 샐러두유) + product keywords (식물성 단백 두유, 유기농 두유) <span class="owner">Justin</span><span class="note">Budget: ₩30,000 / day starting.</span></li>
+      <li class="crit">Naver SA (검색 광고) — same keyword set in Korean <span class="owner">Justin</span><span class="note">Budget: ₩30,000 / day starting.</span></li>
+      <li>Naver DA (디스플레이 광고) — banner format ready in Dawon's hands by Friday <span class="owner">Dawon</span></li>
+      <li>Naver 파워컨텐츠 / 블로그 마케팅 plan (Week 2+) <span class="owner">Justin</span></li>
+      <li>Instagram Reels: launch reel script + visual (record by Friday) <span class="owner">Alex + Dawon</span></li>
+      <li>Instagram Stories series — countdown to launch <span class="owner">Alex</span></li>
+    </ul>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">CUSTOMER SERVICE INFRASTRUCTURE<span class="checklist-owner">Owner: Alex</span></div>
+    <ul>
+      <li class="crit">KakaoTalk Channel @allvitalorganics setup + 자동 응답 메시지 <span class="owner">Alex</span></li>
+      <li class="crit">Top 20 FAQ response templates (배송, 환불, 알레르기, 영양, 보관, 임산부 섭취 등) <span class="owner">Alex</span></li>
+      <li>Customer service phone forwarding: 02-3445-3030 → who picks up? (interim: voicemail + KakaoTalk redirect) <span class="owner">Alex</span></li>
+      <li>Email autoresponder: hello@allvitalorganics — receipt + "respond within 24h" template <span class="owner">Alex</span></li>
+      <li>Naver / Coupang Q&A 응답 SLA 설정: 24h <span class="owner">Justin</span></li>
+    </ul>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">FINANCIAL + LEGAL<span class="checklist-owner">Owner: Alex + Justin</span></div>
+    <ul>
+      <li class="crit">정산 계좌 (재니스바스켓 법인 통장) Naver/Coupang에 연결 + 인증 완료 <span class="owner">Alex</span></li>
+      <li>Naver 정산 주기 확인 (영세사업자 D+1 정산) <span class="owner">Justin</span></li>
+      <li>Coupang 정산 주기 확인 (D+15 or D+45 depending on tier) <span class="owner">Justin</span></li>
+      <li>부가세 신고 일정 표시 (분기 신고: 1/25, 4/25, 7/25, 10/25) <span class="owner">Alex</span></li>
+      <li>법인세 vs 종합소득세 결정 (사업자 형태에 따라) <span class="owner">Alex + 세무사</span></li>
+      <li>회계 시스템 결정: 홈택스 직접 / 더존 / 자비스 / 캐시노트 등 <span class="owner">Alex</span></li>
+    </ul>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">CONTENT + STORYTELLING<span class="checklist-owner">Owner: Alex · visual by Dawon</span></div>
+    <ul>
+      <li>Launch day Instagram post (carousel): 1) Hero shot 2) 18 plants spread 3) 1988 Daoom heritage 4) 1000일 story 5) CTA "Now live on Naver + Coupang" <span class="owner">Alex + Dawon</span></li>
+      <li>Launch day Reel: 30-sec brand intro · founders introduction · product reveal <span class="owner">Alex + Dawon</span></li>
+      <li>KakaoTalk Channel: launch announcement message to existing followers <span class="owner">Alex</span></li>
+      <li>Press list: who gets a "we're live" email Sat? (5-10 wellness/food media contacts) <span class="owner">Alex</span></li>
+      <li>UGC seeding list: who gets a free box first week? (3-5 micro-influencers @ 5K-50K followers) <span class="owner">Alex + Justin</span></li>
+    </ul>
+  </div>
+
+  <!-- FRIDAY -->
+  <div class="day-block tomorrow">
+    <div class="day-tag">T-1 · Fri 2026.05.15 · DRESS REHEARSAL</div>
+    <div class="day-title">Inventory arrives + all tests run</div>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">FRIDAY EXECUTION<span class="checklist-owner">Owner: All</span></div>
+    <ul>
+      <li class="crit">KY Logistics → Daoom warehouse: inventory physically transferred <span class="owner">Justin</span><span class="note">Confirm receipt by 5pm. Reconcile count vs PO.</span></li>
+      <li class="crit">Daoom warehouse: inventory shelved + barcode scanned + ready for fulfillment <span class="owner">Justin + Daoom</span></li>
+      <li class="crit">Naver Smartstore: final listing review (no typos, prices correct, images cropped, options labeled) <span class="owner">Justin</span></li>
+      <li class="crit">Coupang: same final review <span class="owner">Justin</span></li>
+      <li class="crit">Test transaction on Naver (purchase 1 box at full price → confirm flow → refund) <span class="owner">Justin</span></li>
+      <li class="crit">Test transaction on Coupang (same) <span class="owner">Justin</span></li>
+      <li class="crit">Ad campaigns: drafted, audiences set, creative loaded, budgets confirmed — NOT YET ACTIVATED <span class="owner">Justin</span></li>
+      <li class="crit">Instagram Reels + carousel: filmed, edited, scheduled for Sat 12pm <span class="owner">Alex + Dawon</span></li>
+      <li>Press / collab list: emails drafted, scheduled for Sat 10am send <span class="owner">Alex</span></li>
+      <li>UGC seeding: 5 micro-influencers identified, DMs drafted, gift boxes ready at Daoom for Sat ship <span class="owner">Alex + Justin</span></li>
+      <li>9pm Friday: <strong>GO/NO-GO REVIEW</strong> — Alex + Justin call. If any CRIT item incomplete, decide slip vs. proceed. <span class="owner">Alex + Justin</span></li>
+    </ul>
+  </div>
+
+  <!-- SATURDAY LAUNCH -->
+  <div class="day-block launch">
+    <div class="day-tag">T-0 · Sat 2026.05.16 · LAUNCH DAY 🚀</div>
+    <div class="day-title">Go live — see Section 03 launch protocol hour-by-hour</div>
+  </div>
+
+  <div class="callout">
+    <strong>Section 03 below has the full hour-by-hour Saturday + Week 1 protocol.</strong> Use it as the operations script for the next 7 days.
+  </div>
+</section>
+
+<!-- ============== 03 · LAUNCH WEEK PROTOCOL ============== -->
+<section class="module" id="m03">
+  <div class="module-head">
+    <span class="bignum">03</span>
+    <div class="titles">
+      <h2>Launch week protocol<span class="kr">런치 주간 시간표</span></h2>
+      <div class="meta">Sat May 16 → Fri May 22 · hour-by-hour script · <span class="module-status live">live</span></div>
+    </div>
+  </div>
+
+  <h3>Saturday May 16 · LAUNCH DAY</h3>
+  <div class="schedule">
+    <div class="sch-time">08:30</div>
+    <div class="sch-action"><span class="what">Team online + standup</span><span class="who">A + J</span>· Final go/no-go confirmation · review CRIT checklist completion</div>
+    <div class="sch-time">09:00</div>
+    <div class="sch-action"><span class="what">KakaoTalk Channel: launch message to existing followers</span><span class="who">Alex</span>· "와일드 그린즈 샐러두유 오늘 출시됩니다 · 네이버 / 쿠팡에서 만나보세요"</div>
+    <div class="sch-time">10:00</div>
+    <div class="sch-action"><span class="what">Naver Smartstore listing 게시 (draft → live)</span><span class="who">Justin</span></div>
+    <div class="sch-time">10:05</div>
+    <div class="sch-action"><span class="what">Coupang Marketplace listing 게시</span><span class="who">Justin</span></div>
+    <div class="sch-time">10:30</div>
+    <div class="sch-action"><span class="what">Meta Ads campaign activation</span><span class="who">Justin</span>· ₩50K/day budget · Brand Awareness + Conversion mix</div>
+    <div class="sch-time">11:00</div>
+    <div class="sch-action"><span class="what">Google Ads + Naver SA activation</span><span class="who">Justin</span>· Brand + product keywords · ₩30K + ₩30K/day</div>
+    <div class="sch-time">11:30</div>
+    <div class="sch-action"><span class="what">Press emails sent</span><span class="who">Alex</span>· 5-10 contacts · "Now live" with media kit attached</div>
+    <div class="sch-time">12:00</div>
+    <div class="sch-action"><span class="what">Instagram launch post + Reel published</span><span class="who">Alex + Dawon</span>· Carousel: 5 slides · Reel: 30-sec intro</div>
+    <div class="sch-time">12:30</div>
+    <div class="sch-action"><span class="what">UGC seeding DMs sent</span><span class="who">Alex</span>· 5 micro-influencers · "Free gift box arriving — would love your honest review"</div>
+    <div class="sch-time">14:00</div>
+    <div class="sch-action"><span class="what">First sales check</span><span class="who">Justin</span>· Naver + Coupang dashboards · Note: orders, traffic, conversion rate</div>
+    <div class="sch-time">16:00</div>
+    <div class="sch-action"><span class="what">Second sales check + ad performance review</span><span class="who">Justin</span>· CPM, CTR, CPC on Meta · Adjust if any campaign is wasting</div>
+    <div class="sch-time">18:00</div>
+    <div class="sch-action"><span class="what">End-of-Day-1 review call</span><span class="who">A + J</span>· Total orders · Top inquiry types · Ad spend / CAC · Tomorrow's plan</div>
+    <div class="sch-time">20:00</div>
+    <div class="sch-action"><span class="what">Instagram Story: behind-the-scenes Day-1 launch celebration</span><span class="who">Alex</span></div>
+  </div>
+
+  <h3>Sunday May 17 · Day +1</h3>
+  <div class="schedule">
+    <div class="sch-time">09:00</div>
+    <div class="sch-action"><span class="what">Daily standup</span><span class="who">A + J</span>· Day-1 results · Day-2 priorities</div>
+    <div class="sch-time">10:00</div>
+    <div class="sch-action"><span class="what">First fulfillment from Daoom</span><span class="who">Daoom</span>· Sat orders ship · Justin confirms 출고</div>
+    <div class="sch-time">12:00</div>
+    <div class="sch-action"><span class="what">Customer service sweep</span><span class="who">Alex</span>· KakaoTalk · Naver/Coupang Q&A · respond within SLA</div>
+    <div class="sch-time">15:00</div>
+    <div class="sch-action"><span class="what">Ad creative iteration</span><span class="who">Justin + Dawon</span>· If Meta CTR < 1%, swap creative · Test 2 variants by EOD</div>
+    <div class="sch-time">18:00</div>
+    <div class="sch-action"><span class="what">Instagram: "We sold X boxes on Day 1" celebration post</span><span class="who">Alex</span></div>
+  </div>
+
+  <h3>Monday May 18 → Friday May 22 · Stabilization week</h3>
+  <table>
+    <tr><th>Day</th><th>Focus</th><th>Critical actions</th></tr>
+    <tr><td>Mon May 18</td><td>Weekly review + cadence start</td><td>10am Weekly Review meeting · Set Week 1 KPIs · Adjust ad budgets based on Day 1-2 data · 1st UGC gifts arrive at influencers</td></tr>
+    <tr><td>Tue May 19</td><td>Review / response loop</td><td>First reviews start appearing on Naver/Coupang · Respond to every review (positive AND negative) · Track common feedback themes</td></tr>
+    <tr><td>Wed May 20</td><td>Content + UGC</td><td>UGC posts may start appearing · Re-share to brand IG · Send 2nd batch of gifts to wave-2 influencers</td></tr>
+    <tr><td>Thu May 21</td><td>Optimization</td><td>Ad performance: pause underperformers, double-down on winners · Keyword expansion on Naver SA based on Week-1 search data</td></tr>
+    <tr><td>Fri May 22</td><td>Week 1 retro</td><td>End-of-week numbers: total orders, revenue, CAC, top creative, top channel, top SKU question · Plan Week 2 budget shift</td></tr>
+  </table>
+
+  <h3>Week 1 KPIs to track from Day 1</h3>
+  <table>
+    <tr><th>Metric</th><th>Target (Week 1)</th><th>Where to find it</th></tr>
+    <tr><td>Total orders</td><td>100+ boxes (≥6.7% sell-through of inventory)</td><td>Naver Smartstore + Coupang Wing dashboards · sum daily</td></tr>
+    <tr><td>Revenue</td><td>₩4.5M+ (100 boxes × ₩45K)</td><td>Same</td></tr>
+    <tr><td>Conversion rate</td><td>≥1.5% (industry benchmark for new wellness brand)</td><td>Naver / Coupang analytics</td></tr>
+    <tr><td>Ad spend (Week 1)</td><td>≤₩770K (₩110K/day × 7)</td><td>Meta · Google · Naver dashboards</td></tr>
+    <tr><td>CAC (target)</td><td>≤₩7,700 / order</td><td>Ad spend / orders</td></tr>
+    <tr><td>AOV (target)</td><td>≥₩45K (1 box)</td><td>Revenue / orders</td></tr>
+    <tr><td>Customer service response time</td><td>≤2h business hours</td><td>KakaoTalk + Naver/Coupang Q&A</td></tr>
+    <tr><td>Review count (Week 1)</td><td>≥5 reviews (any rating)</td><td>Naver + Coupang review tabs</td></tr>
+    <tr><td>Instagram followers</td><td>+200 (organic + paid)</td><td>@allvitalorganics analytics</td></tr>
+    <tr><td>UGC posts</td><td>≥3 (from seeded influencers)</td><td>Tag tracking on IG</td></tr>
+  </table>
+
+  <div class="callout warn">
+    <strong>If Week 1 misses targets by 50%:</strong> the issue is almost always (a) ad creative / messaging mismatch, OR (b) PDP not converting. Iterate creative first (Week 2). If still flat by Week 3, deeper look at category fit + pricing.
+  </div>
+</section>
+
+<!-- ============== UPCOMING SECTIONS ============== -->
+<section class="module" id="m04">
+  <div class="module-head">
+    <span class="bignum">04</span>
+    <div class="titles">
+      <h2>Operations function<span class="kr">운영 기능</span></h2>
+      <div class="meta">Inventory · Daoom warehouse · fulfillment · CS · returns · <span class="module-status pending">building</span></div>
+    </div>
+  </div>
+  <p class="lead">Coming next (Day 3-4 of build). Covers:</p>
+  <ul style="list-style:none; max-width:760px;">
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13px;"><span style="position:absolute;left:0;color:var(--forest);">·</span> KY → Daoom inventory transfer protocol (lot tracking, FIFO, expiration management)</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13px;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Daoom warehouse fulfillment workflow (order → pick → pack → ship → 운송장 발급)</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13px;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Customer service playbook (top-30 FAQ, escalation tree, complaint resolution SLA)</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13px;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Returns/exchanges process (Naver vs Coupang policy differences)</li>
+    <li style="padding:6px 0 6px 18px; position:relative; font-size:13px;"><span style="position:absolute;left:0;color:var(--forest);">·</span> Quality control + customer complaint protocol</li>
+  </ul>
+</section>
+
+<section class="module" id="m05">
+  <div class="module-head">
+    <span class="bignum">05</span>
+    <div class="titles">
+      <h2>Sales / Channels<span class="kr">판매 / 채널</span></h2>
+      <div class="meta">Naver Smartstore · Coupang · KPIs · channel ladder · <span class="module-status pending">building</span></div>
+    </div>
+  </div>
+  <p class="lead">Day 4-5 of build. Includes channel-by-channel setup, optimization, BM relationship management, expansion ladder (3PL → Rocket Growth → 1P → 홈쇼핑).</p>
+</section>
+
+<section class="module" id="m06">
+  <div class="module-head">
+    <span class="bignum">06</span>
+    <div class="titles">
+      <h2>Marketing function<span class="kr">마케팅 기능</span></h2>
+      <div class="meta">IG · Meta · Google · Naver SA/DA/cafe/blog · UGC · influencer · <span class="module-status pending">building</span></div>
+    </div>
+  </div>
+  <p class="lead">Day 3 of build (high priority). Includes campaign structures, audience definitions, creative testing protocol, UGC seeding system, influencer outreach templates, attribution tracking.</p>
+</section>
+
+<section class="module" id="m07">
+  <div class="module-head">
+    <span class="bignum">07</span>
+    <div class="titles">
+      <h2>Product function<span class="kr">제품 기능</span></h2>
+      <div class="meta">SKU pipeline · R&D · packaging · 식약처 · <span class="module-status pending">building</span></div>
+    </div>
+  </div>
+  <p class="lead">Pipeline: Wild Greens Salad Soymilk v2 (15g fiber) · Wild Greens Phyto Complete · Pure Organic Protein · Grass-fed Colostrum + future Functional Wholefood SKUs.</p>
+</section>
+
+<section class="module" id="m08">
+  <div class="module-head">
+    <span class="bignum">08</span>
+    <div class="titles">
+      <h2>Brand / BM<span class="kr">브랜드 매니지먼트</span></h2>
+      <div class="meta">Voice · content · PR · collabs · <span class="module-status pending">building</span></div>
+    </div>
+  </div>
+  <p class="lead">Links to <a href="https://allvitalorganics.github.io/avo-brand-narrative/" style="color:var(--forest);">brand narrative</a>. Includes content calendar, PR outreach, brand collab criteria.</p>
+</section>
+
+<section class="module" id="m09">
+  <div class="module-head">
+    <span class="bignum">09</span>
+    <div class="titles">
+      <h2>Finance function<span class="kr">재무 기능</span></h2>
+      <div class="meta">Cash flow · settlement · COGS · tax · monthly P&L · <span class="module-status pending">building</span></div>
+    </div>
+  </div>
+  <p class="lead">Critical Day-1: settlement schedules, COGS tracking, monthly close, 부가세 신고 schedule, 종합소득세 / 법인세 timing, 자비스/캐시노트 setup.</p>
+</section>
+
+<section class="module" id="m10">
+  <div class="module-head">
+    <span class="bignum">10</span>
+    <div class="titles">
+      <h2>Management cadence<span class="kr">매니지먼트 리듬</span></h2>
+      <div class="meta">Standups · weekly · monthly · quarterly · <span class="module-status pending">building</span></div>
+    </div>
+  </div>
+  <p class="lead">Detailed agendas + templates for daily standup, weekly review, monthly retro, quarterly planning. OKR setting.</p>
+</section>
+
+<section class="module" id="m11">
+  <div class="module-head">
+    <span class="bignum">11</span>
+    <div class="titles">
+      <h2>Investment / Scaling<span class="kr">투자 / 확장</span></h2>
+      <div class="meta">When to raise · pitch prep · due diligence · cap table · <span class="module-status pending">building</span></div>
+    </div>
+  </div>
+  <p class="lead">Triggers for raise (revenue + traction signals), pitch deck prep (links to existing intro deck), DD-ready bookkeeping standards, cap table model with AVO Ventures LLC + Korean entity.</p>
+</section>
+
+<section class="module" id="m12">
+  <div class="module-head">
+    <span class="bignum">12</span>
+    <div class="titles">
+      <h2>Tools / Stack<span class="kr">도구 / 스택</span></h2>
+      <div class="meta">Every tool, login, integration · <span class="module-status pending">building</span></div>
+    </div>
+  </div>
+  <p class="lead">Naver Smartstore · Coupang Wing · KakaoTalk Channel · Meta Ads Manager · Google Ads · Naver 검색 광고 · 홈택스 · 자비스 · Notion · Slack · GitHub · Figma · etc. Logins + responsibilities mapped.</p>
+</section>
+
+<section class="module" id="m13">
+  <div class="module-head">
+    <span class="bignum">13</span>
+    <div class="titles">
+      <h2>Per-function crash course<span class="kr">기능별 학습 자료</span></h2>
+      <div class="meta">Korean ecommerce learning · 5 must-read items per function · <span class="module-status pending">building</span></div>
+    </div>
+  </div>
+  <p class="lead">For each function, 5 must-read articles + 2 YouTube channels + 1 book to go from beginner to operational. Korean ecommerce-specific resources prioritized.</p>
+</section>
+
+<footer>
+  AVO Operating System · v0.1 · 2026.05.14 · Living doc, iterated weekly<br>
+  Sections 00-03 LIVE · Sections 04-13 in build queue · Updates pushed to allvitalorganics.github.io/avo-os/
+</footer>
+
+</div>
+</body>
+</html>
